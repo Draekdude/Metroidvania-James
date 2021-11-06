@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,11 +11,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float jumpForce = 20f;
     [SerializeField] Transform groundPoint;
     [SerializeField] LayerMask whatIsGround;
+    [SerializeField] Animator animator;
 
     Vector2 movement;
     bool isJump = false;
     bool isOnGround = true;
 
+    const string isOnGroundAnimation = "isOnGround";
+    const string moveSpeedAnimation = "speed";
     const float groundRadius = 0.2f;
     // Start is called before the first frame update
     void Start()
@@ -25,7 +29,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckIfOnGround();
         Move();
+        SetAnimation();
+    }
+
+    private void SetAnimation()
+    {
+        animator.SetBool(isOnGroundAnimation, isOnGround);
+        animator.SetFloat(moveSpeedAnimation, Mathf.Abs(rb.velocity.x));
     }
 
     public void OnMovement(InputAction.CallbackContext context)
@@ -35,7 +47,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if(CheckIfOnGround()) isJump = true;
+        if(isOnGround) isJump = true;
     }
 
     private bool CheckIfOnGround()
@@ -58,6 +70,7 @@ public class PlayerController : MonoBehaviour
         }
         isJump = false;
     }
+
 
 
 }
