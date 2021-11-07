@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask whatIsGround;
     [SerializeField] Animator animator;
 
+    [SerializeField] BulletController bulletController;
+    [SerializeField] Transform shotPoint;
+
     Vector2 movement;
     bool isJump = false;
     bool isOnGround = true;
@@ -49,6 +52,16 @@ public class PlayerController : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         if(isOnGround) isJump = true;
+    }
+
+    public void OnFire(InputAction.CallbackContext context)
+    {
+        Shoot();
+    }
+
+    private void Shoot()
+    {
+        Instantiate(bulletController, shotPoint.position, shotPoint.rotation).moveDirection = new Vector2(transform.localScale.x, 0);
     }
 
     private bool CheckIfOnGround()
