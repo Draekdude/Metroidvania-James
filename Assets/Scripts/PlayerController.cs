@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.WindowsRuntime;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -59,8 +60,21 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        rb.velocity= new Vector2(movement.x * moveSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(movement.x * moveSpeed, rb.velocity.y);
+        FacePlayerTowardsMovement();
         Jump();
+    }
+
+    private void FacePlayerTowardsMovement()
+    {
+        if (rb.velocity.x < 0)
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
+        else if (rb.velocity.x > 0)
+        {
+            transform.localScale = Vector3.one;
+        }
     }
 
     private void Jump()
