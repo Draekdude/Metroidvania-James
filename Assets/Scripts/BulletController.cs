@@ -8,6 +8,7 @@ public class BulletController : MonoBehaviour
 {
     [SerializeField] float bulletSpeed;
     [SerializeField] Rigidbody2D rb;
+    [SerializeField] GameObject impactEffect;
     public UnityEngine.Vector2 moveDirection;
 
     // Update is called once per frame
@@ -23,6 +24,7 @@ public class BulletController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if(impactEffect != null) Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 
