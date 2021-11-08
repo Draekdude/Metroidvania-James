@@ -20,9 +20,11 @@ public class PlayerController : MonoBehaviour
     Vector2 movement;
     bool isJump = false;
     bool isOnGround = true;
+    bool isShooting = false;
 
     const string isOnGroundAnimation = "isOnGround";
     const string moveSpeedAnimation = "speed";
+    const string shootingAnimation = "shotFired";
     const float groundRadius = 0.2f;
     // Start is called before the first frame update
     void Start()
@@ -62,6 +64,7 @@ public class PlayerController : MonoBehaviour
     private void Shoot()
     {
         Instantiate(bulletController, shotPoint.position, shotPoint.rotation).moveDirection = new Vector2(transform.localScale.x, 0);
+        animator.SetTrigger(shootingAnimation);
     }
 
     private bool CheckIfOnGround()
@@ -97,7 +100,5 @@ public class PlayerController : MonoBehaviour
         }
         isJump = false;
     }
-
-
 
 }
