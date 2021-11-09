@@ -15,16 +15,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] BulletController bulletController;
     [SerializeField] Transform shotPoint;
+    [SerializeField] float dashSpeed, dashTime;
 
     Vector2 movement;
     bool isJump = false;
     bool isOnGround;
     bool canDoubleJump;
-
+    float dashCounter;
     const string isOnGroundAnimation = "isOnGround";
     const string moveSpeedAnimation = "speed";
     const string shootingAnimation = "shotFired";
-
     const string doubleJumpAnimation = "doubleJump";
     const float groundRadius = 0.2f;
     // Start is called before the first frame update
@@ -37,16 +37,18 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         CheckIfOnGround();
-        Move();
-        SetAnimation();
+        if(dashCounter > 0){
+            Dash();
+        } else {
+            Move();
+            Jump();
+        }
     }
 
-    private void SetAnimation()
+    public void OnDash(InputAction.CallbackContext context)
     {
-        animator.SetBool(isOnGroundAnimation, isOnGround);
-        animator.SetFloat(moveSpeedAnimation, Mathf.Abs(rb.velocity.x));
+        if(context.performed) dashCounter = dashTime;
     }
-
     public void OnMovement(InputAction.CallbackContext context)
     {
         movement = context.ReadValue<Vector2>();
@@ -68,18 +70,29 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger(shootingAnimation);
     }
 
+    private void Dash()
+    {
+        dashCounter = dashCounter - Time.deltaTime;
+        rb.velocity = new Vector2(dashSpeed * transform.localScale.x, rb.velocity.y);
+    }
+
+    private void SetMoveAnimation()
+    {
+        animator.SetBool(isOnGroundAnimation, isOnGround);
+        animator.SetFloat(moveSpeedAnimation, Mathf.Abs(rb.velocity.x));
+    }
+
     private bool CheckIfOnGround()
     {
         isOnGround = Physics2D.OverlapCircle(groundPoint.position, groundRadius, whatIsGround);
         return isOnGround;
     }
 
-
     private void Move()
     {
         rb.velocity = new Vector2(movement.x * moveSpeed, rb.velocity.y);
         FacePlayerTowardsMovement();
-        Jump();
+        SetMoveAnimation();
     }
 
     private void FacePlayerTowardsMovement()

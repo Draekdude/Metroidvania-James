@@ -36,6 +36,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Dash",
+                    "type": "Button",
+                    "id": "b112fea9-87dc-4384-a54b-a2900cd08d3a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -208,7 +216,7 @@
                     "name": "",
                     "id": "143bb1cd-cc10-4eca-a2f0-a3664166fe91",
                     "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Fire",
@@ -273,11 +281,33 @@
                 {
                     "name": "",
                     "id": "12093716-1c68-47a4-ac3c-4d0eb2315f1f",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b3722877-1dc5-4719-b477-a51b36f7489c",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2edd18de-dc13-41f2-9dbd-542db90da978",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
