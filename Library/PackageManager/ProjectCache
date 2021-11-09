@@ -5,27 +5,27 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637717120190000000
-    m_Hash: 2732174766
+      ticks: 637720206620000000
+    m_Hash: 2928713873
   m_LockFileStatus:
     m_FilePath: /Users/julianboardman/Documents/GitHub/Metroidvania-James/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637717120190000000
-    m_Hash: 2939995384
+      ticks: 637720206620000000
+    m_Hash: 796464914
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
   m_Packages:
     m_ResolvedPackages:
-    - packageId: com.unity.2d.animation@5.0.7
+    - packageId: com.unity.2d.animation@5.0.9
       testable: 0
       isDirectDependency: 1
-      version: 5.0.7
+      version: 5.0.9
       source: 1
-      resolvedPath: /Users/julianboardman/Documents/GitHub/Metroidvania-James/Library/PackageCache/com.unity.2d.animation@5.0.7
+      resolvedPath: /Users/julianboardman/Documents/GitHub/Metroidvania-James/Library/PackageCache/com.unity.2d.animation@5.0.9
       assetPath: Packages/com.unity.2d.animation
       name: com.unity.2d.animation
       displayName: 2D Animation
@@ -164,13 +164,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637637510960000000
+      datePublishedTicks: 637704378040000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/2d.git
-        revision: 6f9c488e4d487ead34ee4d516f0a2f4a911a8b25
+        revision: 66590de9de7c21359f721ef05db04d7f1753bde9
         path: 
     - packageId: com.unity.2d.pixel-perfect@4.0.1
       testable: 0
@@ -247,12 +247,12 @@ m_PackageAssets:
         url: https://github.cds.internal.unity3d.com/unity/2d.git
         revision: 7d7470f4ca0ea8353d4c9640b3b6ae9d1ebd9c1d
         path: 
-    - packageId: com.unity.2d.psdimporter@4.1.0
+    - packageId: com.unity.2d.psdimporter@4.1.2
       testable: 0
       isDirectDependency: 1
-      version: 4.1.0
+      version: 4.1.2
       source: 1
-      resolvedPath: /Users/julianboardman/Documents/GitHub/Metroidvania-James/Library/PackageCache/com.unity.2d.psdimporter@4.1.0
+      resolvedPath: /Users/julianboardman/Documents/GitHub/Metroidvania-James/Library/PackageCache/com.unity.2d.psdimporter@4.1.2
       assetPath: Packages/com.unity.2d.psdimporter
       name: com.unity.2d.psdimporter
       displayName: 2D PSD Importer
@@ -325,7 +325,7 @@ m_PackageAssets:
       - name: com.unity.2d.common
         version: 4.0.3
       - name: com.unity.2d.animation
-        version: 5.0.6
+        version: 5.0.9
       - name: com.unity.2d.sprite
         version: 1.0.0
       resolvedDependencies:
@@ -344,7 +344,7 @@ m_PackageAssets:
       - name: com.unity.modules.uielementsnative
         version: 1.0.0
       - name: com.unity.2d.animation
-        version: 5.0.7
+        version: 5.0.9
       - name: com.unity.mathematics
         version: 1.1.0
       - name: com.unity.modules.animation
@@ -365,13 +365,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637594727750000000
+      datePublishedTicks: 637704378080000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/2d.git
-        revision: 9e7fd5cbe078d004f1e87ecdf3b57436664a690a
+        revision: 66590de9de7c21359f721ef05db04d7f1753bde9
         path: 
     - packageId: com.unity.2d.sprite@1.0.0
       testable: 0
@@ -424,12 +424,12 @@ m_PackageAssets:
         url: 
         revision: 
         path: 
-    - packageId: com.unity.2d.spriteshape@5.1.4
+    - packageId: com.unity.2d.spriteshape@5.1.5
       testable: 0
       isDirectDependency: 1
-      version: 5.1.4
+      version: 5.1.5
       source: 1
-      resolvedPath: /Users/julianboardman/Documents/GitHub/Metroidvania-James/Library/PackageCache/com.unity.2d.spriteshape@5.1.4
+      resolvedPath: /Users/julianboardman/Documents/GitHub/Metroidvania-James/Library/PackageCache/com.unity.2d.spriteshape@5.1.5
       assetPath: Packages/com.unity.2d.spriteshape
       name: com.unity.2d.spriteshape
       displayName: 2D SpriteShape
@@ -560,13 +560,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637637511330000000
+      datePublishedTicks: 637684997050000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/2d.git
-        revision: 6f9c488e4d487ead34ee4d516f0a2f4a911a8b25
+        revision: f2df77302616ee97ac0bda980859324394e44df3
         path: 
     - packageId: com.unity.2d.tilemap@1.0.0
       testable: 0
@@ -735,113 +735,6 @@ m_PackageAssets:
         url: https://github.cds.internal.unity3d.com/unity/com.unity.cloud.collaborate.git
         revision: 51447944a1e7d94937e6b7f9e887d58f5097ed13
         path: 
-    - packageId: com.unity.ide.rider@2.0.7
-      testable: 0
-      isDirectDependency: 1
-      version: 2.0.7
-      source: 1
-      resolvedPath: /Users/julianboardman/Documents/GitHub/Metroidvania-James/Library/PackageCache/com.unity.ide.rider@2.0.7
-      assetPath: Packages/com.unity.ide.rider
-      name: com.unity.ide.rider
-      displayName: JetBrains Rider Editor
-      author:
-        name: 
-        email: 
-        url: 
-      category: 
-      type: 
-      description: The JetBrains Rider Editor package provides an integration for
-        using the JetBrains Rider IDE as a code editor for Unity. It adds support
-        for generating .csproj files for code completion and auto-discovery of installations.
-      status: 4
-      errors: []
-      versions:
-        all:
-        - 1.0.2
-        - 1.0.6
-        - 1.0.8
-        - 1.1.0
-        - 1.1.1
-        - 1.1.2-preview
-        - 1.1.2-preview.2
-        - 1.1.3-preview.1
-        - 1.1.4-preview
-        - 1.1.4
-        - 1.2.0-preview
-        - 1.2.1
-        - 2.0.0-preview
-        - 2.0.1
-        - 2.0.2
-        - 2.0.3
-        - 2.0.5
-        - 2.0.7
-        - 3.0.1
-        - 3.0.2
-        - 3.0.3
-        - 3.0.4
-        - 3.0.5
-        - 3.0.6
-        - 3.0.7
-        compatible:
-        - 1.0.2
-        - 1.0.6
-        - 1.0.8
-        - 1.1.0
-        - 1.1.1
-        - 1.1.2-preview
-        - 1.1.2-preview.2
-        - 1.1.3-preview.1
-        - 1.1.4-preview
-        - 1.1.4
-        - 1.2.0-preview
-        - 1.2.1
-        - 2.0.0-preview
-        - 2.0.1
-        - 2.0.2
-        - 2.0.3
-        - 2.0.5
-        - 2.0.7
-        - 3.0.1
-        - 3.0.2
-        - 3.0.3
-        - 3.0.4
-        - 3.0.5
-        - 3.0.6
-        - 3.0.7
-        verified: 2.0.7
-      dependencies:
-      - name: com.unity.test-framework
-        version: 1.1.1
-      resolvedDependencies:
-      - name: com.unity.test-framework
-        version: 1.1.29
-      - name: com.unity.ext.nunit
-        version: 1.0.6
-      - name: com.unity.modules.imgui
-        version: 1.0.0
-      - name: com.unity.modules.jsonserialize
-        version: 1.0.0
-      keywords: []
-      registry:
-        id: main
-        name: 
-        url: https://packages.unity.com
-        scopes: []
-        isDefault: 1
-        capabilities: 7
-      hasRegistry: 1
-      hideInEditor: 1
-      entitlements:
-        isAllowed: 1
-      isAssetStorePackage: 0
-      datePublishedTicks: 637334461080000000
-      documentationUrl: 
-      hasRepository: 1
-      repository:
-        type: git
-        url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.rider.git
-        revision: abb44f053e9a41d2e00e149e32a19bcec76e98b4
-        path: 
     - packageId: com.unity.ide.visualstudio@2.0.11
       testable: 0
       isDirectDependency: 1
@@ -901,7 +794,7 @@ m_PackageAssets:
         version: 1.1.9
       resolvedDependencies:
       - name: com.unity.test-framework
-        version: 1.1.29
+        version: 1.1.30
       - name: com.unity.ext.nunit
         version: 1.0.6
       - name: com.unity.modules.imgui
@@ -1116,12 +1009,12 @@ m_PackageAssets:
         url: git+https://github.com/Unity-Technologies/InputSystem.git
         revision: 041def76515febb36a83d1f928cfb7aefb85176c
         path: 
-    - packageId: com.unity.test-framework@1.1.29
+    - packageId: com.unity.test-framework@1.1.30
       testable: 0
       isDirectDependency: 1
-      version: 1.1.29
+      version: 1.1.30
       source: 1
-      resolvedPath: /Users/julianboardman/Documents/GitHub/Metroidvania-James/Library/PackageCache/com.unity.test-framework@1.1.29
+      resolvedPath: /Users/julianboardman/Documents/GitHub/Metroidvania-James/Library/PackageCache/com.unity.test-framework@1.1.30
       assetPath: Packages/com.unity.test-framework
       name: com.unity.test-framework
       displayName: Test Framework
@@ -1201,13 +1094,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637647922650000000
+      datePublishedTicks: 637702469360000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
-        url: git+https://github.com/Unity-Technologies/com.unity.test-framework.git
-        revision: dac53542acdab7a12e9ebf111ac588d0e53cf483
+        url: https://github.com/Unity-Technologies/com.unity.test-framework.git
+        revision: 4a3f541cb46e2f6875b3a938daba8c7113020873
         path: 
     - packageId: com.unity.textmeshpro@3.0.6
       testable: 0
@@ -1310,6 +1203,7 @@ m_PackageAssets:
         - 2.1.5
         - 2.1.6
         - 2.2.0-preview.1
+        - 2.2.0-preview.2
         - 3.0.0-preview.1
         - 3.0.0-preview.3
         - 3.0.0-preview.4
@@ -3431,6 +3325,7 @@ m_PackageAssets:
         - 1.1.0
         - 1.2.1
         - 1.2.4
+        - 1.2.5
         compatible:
         - 0.0.12-preview.2
         - 0.0.12-preview.5
@@ -3447,7 +3342,8 @@ m_PackageAssets:
         - 1.1.0
         - 1.2.1
         - 1.2.4
-        verified: 1.2.4
+        - 1.2.5
+        verified: 1.2.5
       dependencies: []
       resolvedDependencies: []
       keywords:

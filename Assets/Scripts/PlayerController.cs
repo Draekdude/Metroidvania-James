@@ -13,18 +13,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform groundPoint;
     [SerializeField] LayerMask whatIsGround;
     [SerializeField] Animator animator;
-
     [SerializeField] BulletController bulletController;
     [SerializeField] Transform shotPoint;
 
     Vector2 movement;
     bool isJump = false;
-    bool isOnGround = true;
-    bool isShooting = false;
+    bool isOnGround;
+    bool canDoubleJump;
 
     const string isOnGroundAnimation = "isOnGround";
     const string moveSpeedAnimation = "speed";
     const string shootingAnimation = "shotFired";
+
+    const string doubleJumpAnimation = "doubleJump";
     const float groundRadius = 0.2f;
     // Start is called before the first frame update
     void Start()
@@ -53,12 +54,12 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if(isOnGround) isJump = true;
+        if(context.performed && (isOnGround || canDoubleJump)) isJump = true;
     }
 
     public void OnFire(InputAction.CallbackContext context)
     {
-        Shoot();
+        if(context.performed) Shoot();
     }
 
     private void Shoot()
@@ -95,10 +96,18 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if(isJump){
-            rb.velocity= new Vector2(rb.velocity.x, jumpForce);
+        if(isJump)
+        {
+            canDoubleJump = SetDoubleJump();
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
         isJump = false;
     }
 
+    private bool SetDoubleJump()
+    {
+        if (isOnGround) return true;
+        animator.SetTrigger(doubleJumpAnimation);
+        return false;
+    }
 }
