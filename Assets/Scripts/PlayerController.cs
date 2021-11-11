@@ -16,7 +16,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] BulletController bulletController;
     [SerializeField] Transform shotPoint;
     [SerializeField] float dashSpeed, dashTime;
-
+    [SerializeField] SpriteRenderer mainSpriteRend;
+    [SerializeField] SpriteRenderer afterSpriteRend;
+    [SerializeField] float afterImageLifetime;
+    [SerializeField] float timeBetweenAfterImages;
+    [SerializeField] Color afterImageColor;
+    [SerializeField] float waitAfterDashing;
+    bool ableToDash;
+    float dashRechargeCounter;
+    float afterImageCounter;
     Vector2 movement;
     bool isJump = false;
     bool isOnGround;
@@ -37,6 +45,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         CheckIfOnGround();
+        ableToDash = canDash();
         if(dashCounter > 0){
             Dash();
         } else {
@@ -45,9 +54,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public bool canDash() 
+    {
+        if(dashRechargeCounter > 0){
+            dashRechargeCounter -= Time.deltaTime;
+            return false;
+        }
+        return true;
+    }
+
     public void OnDash(InputAction.CallbackContext context)
     {
-        if(context.performed) dashCounter = dashTime;
+        if(context.performed && ableToDash) 
+        {
+            dashCounter = dashTime;
+            ShowAfterImage();
+        }
     }
     public void OnMovement(InputAction.CallbackContext context)
     {
@@ -64,6 +86,16 @@ public class PlayerController : MonoBehaviour
         if(context.performed) Shoot();
     }
 
+    public void ShowAfterImage()
+    {
+        SpriteRenderer image = Instantiate(afterSpriteRend, transform.position, transform.rotation);
+        image.sprite = mainSpriteRend.sprite;
+        image.transform.localScale = transform.localScale;
+        image.color = afterImageColor;
+        Destroy(image.gameObject, afterImageLifetime);
+        afterImageCounter = timeBetweenAfterImages;
+    }
+
     private void Shoot()
     {
         Instantiate(bulletController, shotPoint.position, shotPoint.rotation).moveDirection = new Vector2(transform.localScale.x, 0);
@@ -72,8 +104,16 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
-        dashCounter = dashCounter - Time.deltaTime;
+        dashCounter -= Time.deltaTime;
         rb.velocity = new Vector2(dashSpeed * transform.localScale.x, rb.velocity.y);
+        DashEffect();
+        dashRechargeCounter = waitAfterDashing;
+    }
+
+    private void DashEffect()
+    {
+        afterImageCounter -= Time.deltaTime;
+        if(afterImageCounter <= 0) ShowAfterImage();
     }
 
     private void SetMoveAnimation()
