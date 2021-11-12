@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject standing;
     [SerializeField] GameObject ball;
     [SerializeField] float waitToBall;
+    [SerializeField] Transform bombPoint;
+    [SerializeField] GameObject bomb;
+
 
     bool isBallActivating;
     bool isBallDeactivating;
@@ -157,8 +160,14 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot()
     {
-        Instantiate(bulletController, shotPoint.position, shotPoint.rotation).moveDirection = new Vector2(transform.localScale.x, 0);
-        standAnimator.SetTrigger(shootingAnimation);
+        if(standing.activeSelf){
+            Instantiate(bulletController, shotPoint.position, shotPoint.rotation).moveDirection = new Vector2(transform.localScale.x, 0);
+            standAnimator.SetTrigger(shootingAnimation);
+        } 
+        else if (ball.activeSelf) 
+        {
+            Instantiate(bomb, bombPoint.transform.position, bombPoint.transform.rotation);
+        }
     }
 
     private void Dash()

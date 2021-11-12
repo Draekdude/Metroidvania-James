@@ -36,9 +36,11 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets/Scripts/PlayerController.cs" />
-     <Compile Include="Assets/Scripts/CameraController.cs" />
      <Compile Include="Assets/Scripts/BulletController.cs" />
+     <Compile Include="Assets/Scripts/CameraController.cs" />
+     <Compile Include="Assets/Scripts/PlayerController.cs" />
+     <Compile Include="Assets/Scripts/BombController.cs" />
+     <Compile Include="Assets/Scripts/DestroyOverTime.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/Applications/Unity/Hub/Editor/2020.3.19f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -684,10 +686,6 @@
     <ProjectReference Include="Unity.InputSystem.csproj">
       <Project>{27052d19-b17e-6a2b-d16a-700f3c5f1ca1}</Project>
       <Name>Unity.InputSystem</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Rider.Editor.csproj">
-      <Project>{ccd0c1ef-cc8b-18d1-d8b2-c08585586002}</Project>
-      <Name>Unity.Rider.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.PlasticSCM.Editor.csproj">
       <Project>{a6cf211a-a9a3-9130-d786-dc2e33ee6e4e}</Project>
