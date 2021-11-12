@@ -22,9 +22,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float timeBetweenAfterImages;
     [SerializeField] Color afterImageColor;
     [SerializeField] float waitAfterDashing;
-    bool ableToDash;
+    [SerializeField] GameObject standing;
+    [SerializeField] GameObject ball;
+    [SerializeField] float waitToBall;
+
+    bool isBallActivating;
+    bool isBallDeactivating;
+    float ballCounter;
     float dashRechargeCounter;
     float afterImageCounter;
+    bool ableToDash;
     Vector2 movement;
     bool isJump = false;
     bool isOnGround;
@@ -46,11 +53,36 @@ public class PlayerController : MonoBehaviour
     {
         CheckIfOnGround();
         ableToDash = canDash();
-        if(dashCounter > 0){
+        if (dashCounter > 0)
+        {
             Dash();
-        } else {
+        }
+        else
+        {
             Move();
             Jump();
+        }
+        SetBallStatus();
+    }
+
+    private void SetBallStatus()
+    {
+        if (isBallActivating || isBallDeactivating)
+        {
+            ballCounter -= Time.deltaTime;
+            if (ballCounter <= 0)
+            {
+                if (isBallActivating)
+                {
+                    ball.SetActive(true);
+                    standing.SetActive(false);
+                }
+                else if (isBallDeactivating)
+                {
+                    ball.SetActive(false);
+                    standing.SetActive(true);
+                }
+            }
         }
     }
 
@@ -58,6 +90,10 @@ public class PlayerController : MonoBehaviour
     {
         if(dashRechargeCounter > 0){
             dashRechargeCounter -= Time.deltaTime;
+            return false;
+        }
+        if(!standing.activeSelf)
+        {
             return false;
         }
         return true;
@@ -84,6 +120,28 @@ public class PlayerController : MonoBehaviour
     public void OnFire(InputAction.CallbackContext context)
     {
         if(context.performed) Shoot();
+    }
+
+    public void OnBallActivate(InputAction.CallbackContext context)
+    {
+        if(context.started && !ball.activeSelf) {
+            isBallActivating = true;
+            ballCounter = waitToBall;
+        }
+        if(context.canceled) {
+            isBallActivating = false;
+        }
+    }
+
+    public void OnBallDeactivate(InputAction.CallbackContext context)
+    {
+        if(context.started && ball.activeSelf) {
+            isBallDeactivating = true;
+            ballCounter = waitToBall;
+        }
+        if(context.canceled) {
+            isBallDeactivating = false;
+        }
     }
 
     public void ShowAfterImage()
