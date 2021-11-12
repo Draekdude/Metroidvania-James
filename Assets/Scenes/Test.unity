@@ -257,7 +257,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  animator: {fileID: 1607306943}
+  standAnimator: {fileID: 1607306943}
+  ballanimator: {fileID: 1367392003}
   bulletController: {fileID: 4964170202342766164, guid: 087363dab79074aa190193a3781b5949, type: 3}
   shotPoint: {fileID: 3156667391300484792}
   dashSpeed: 25

@@ -12,7 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float jumpForce = 20f;
     [SerializeField] Transform groundPoint;
     [SerializeField] LayerMask whatIsGround;
-    [SerializeField] Animator animator;
+    [SerializeField] Animator standAnimator;
+    [SerializeField] Animator ballanimator;
     [SerializeField] BulletController bulletController;
     [SerializeField] Transform shotPoint;
     [SerializeField] float dashSpeed, dashTime;
@@ -157,7 +158,7 @@ public class PlayerController : MonoBehaviour
     private void Shoot()
     {
         Instantiate(bulletController, shotPoint.position, shotPoint.rotation).moveDirection = new Vector2(transform.localScale.x, 0);
-        animator.SetTrigger(shootingAnimation);
+        standAnimator.SetTrigger(shootingAnimation);
     }
 
     private void Dash()
@@ -176,8 +177,14 @@ public class PlayerController : MonoBehaviour
 
     private void SetMoveAnimation()
     {
-        animator.SetBool(isOnGroundAnimation, isOnGround);
-        animator.SetFloat(moveSpeedAnimation, Mathf.Abs(rb.velocity.x));
+        if(standing.activeSelf){
+            standAnimator.SetBool(isOnGroundAnimation, isOnGround);
+            standAnimator.SetFloat(moveSpeedAnimation, Mathf.Abs(rb.velocity.x));
+        } 
+        else if (ball.activeSelf)
+        {
+            ballanimator.SetFloat(moveSpeedAnimation, Mathf.Abs(rb.velocity.x));
+        }
     }
 
     private bool CheckIfOnGround()
@@ -218,7 +225,7 @@ public class PlayerController : MonoBehaviour
     private bool SetDoubleJump()
     {
         if (isOnGround) return true;
-        animator.SetTrigger(doubleJumpAnimation);
+        standAnimator.SetTrigger(doubleJumpAnimation);
         return false;
     }
 }
