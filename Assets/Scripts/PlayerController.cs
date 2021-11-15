@@ -46,10 +46,12 @@ public class PlayerController : MonoBehaviour
     const string shootingAnimation = "shotFired";
     const string doubleJumpAnimation = "doubleJump";
     const float groundRadius = 0.2f;
+    PlayerAbilityTracker abilities;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        abilities = GetComponent<PlayerAbilityTracker>();
     }
 
     // Update is called once per frame
@@ -59,6 +61,7 @@ public class PlayerController : MonoBehaviour
         ableToDash = canDash();
         if (dashCounter > 0)
         {
+            print("can dash: " + abilities.GetCanDash());
             Dash();
         }
         else
@@ -66,7 +69,7 @@ public class PlayerController : MonoBehaviour
             Move();
             Jump();
         }
-        SetBallStatus();
+        if(abilities.GetCanBecomeBall()) SetBallStatus();
     }
 
     private void SetBallStatus()
@@ -96,7 +99,7 @@ public class PlayerController : MonoBehaviour
             dashRechargeCounter -= Time.deltaTime;
             return false;
         }
-        if(!standing.activeSelf)
+        if(!standing.activeSelf || !abilities.GetCanDash())
         {
             return false;
         }
@@ -118,7 +121,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if(context.performed && (isOnGround || canDoubleJump)) isJump = true;
+        if(context.performed && (isOnGround || canDoubleJump && abilities.GetCanDoubleJump())) isJump = true;
     }
 
     public void OnFire(InputAction.CallbackContext context)
@@ -164,7 +167,7 @@ public class PlayerController : MonoBehaviour
             Instantiate(bulletController, shotPoint.position, shotPoint.rotation).moveDirection = new Vector2(transform.localScale.x, 0);
             standAnimator.SetTrigger(shootingAnimation);
         } 
-        else if (ball.activeSelf) 
+        else if (ball.activeSelf && abilities.GetCanDropBomb()) 
         {
             Instantiate(bomb, bombPoint.transform.position, bombPoint.transform.rotation);
         }
@@ -225,13 +228,13 @@ public class PlayerController : MonoBehaviour
     {
         if(isJump)
         {
-            canDoubleJump = SetDoubleJump();
+            canDoubleJump = CanDoubleJump();
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
         isJump = false;
     }
 
-    private bool SetDoubleJump()
+    private bool CanDoubleJump()
     {
         if (isOnGround) return true;
         standAnimator.SetTrigger(doubleJumpAnimation);

@@ -208,11 +208,11 @@
      <Compile Include="Library/PackageCache/com.unity.inputsystem@1.0.2/InputSystem/Editor/Internal/SerializedPropertyHelpers.cs" />
      <Compile Include="Library/PackageCache/com.unity.inputsystem@1.0.2/InputSystem/Editor/AssetEditor/ParameterListView.cs" />
      <Compile Include="Library/PackageCache/com.unity.inputsystem@1.0.2/InputSystem/Controls/DiscreteButtonControl.cs" />
+     <Compile Include="Library/PackageCache/com.unity.inputsystem@1.0.2/InputSystem/Controls/TouchPhaseControl.cs" />
      <Compile Include="Library/PackageCache/com.unity.inputsystem@1.0.2/InputSystem/Plugins/Steam/SteamController.cs" />
      <Compile Include="Library/PackageCache/com.unity.inputsystem@1.0.2/InputSystem/Controls/AnyKeyControl.cs" />
      <Compile Include="Library/PackageCache/com.unity.inputsystem@1.0.2/InputSystem/Editor/Internal/EditorHelpers.cs" />
      <Compile Include="Library/PackageCache/com.unity.inputsystem@1.0.2/InputSystem/Controls/Processors/NormalizeVector3Processor.cs" />
-     <Compile Include="Library/PackageCache/com.unity.inputsystem@1.0.2/InputSystem/Controls/TouchPhaseControl.cs" />
      <Compile Include="Library/PackageCache/com.unity.inputsystem@1.0.2/InputSystem/Utilities/TypeTable.cs" />
      <Compile Include="Library/PackageCache/com.unity.inputsystem@1.0.2/InputSystem/Controls/AxisControl.cs" />
      <Compile Include="Library/PackageCache/com.unity.inputsystem@1.0.2/InputSystem/Controls/Processors/ScaleVector2Processor.cs" />
