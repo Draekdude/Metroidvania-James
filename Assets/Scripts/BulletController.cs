@@ -6,9 +6,11 @@ using System;
 
 public class BulletController : MonoBehaviour
 {
+    const string Enemy = "Enemy";
     [SerializeField] float bulletSpeed;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] GameObject impactEffect;
+    [SerializeField] int damageAmount = 1;
     public UnityEngine.Vector2 moveDirection;
 
     // Update is called once per frame
@@ -24,6 +26,10 @@ public class BulletController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.tag == Enemy) 
+        {
+            other.GetComponent<EnemyHealthController>().DamageEnemy(damageAmount);
+        }
         if(impactEffect != null) Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(gameObject);
     }

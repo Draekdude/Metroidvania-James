@@ -41,11 +41,11 @@ public class PlayerController : MonoBehaviour
     bool isOnGround;
     bool canDoubleJump;
     float dashCounter;
-    const string isOnGroundAnimation = "isOnGround";
-    const string moveSpeedAnimation = "speed";
-    const string shootingAnimation = "shotFired";
-    const string doubleJumpAnimation = "doubleJump";
-    const float groundRadius = 0.2f;
+    const string Is_On_Ground_Animation = "isOnGround";
+    const string Move_Speed_Animation = "speed";
+    const string Shooting_Animation = "shotFired";
+    const string Double_Jump_Animation = "doubleJump";
+    const float Ground_Radius = 0.2f;
     PlayerAbilityTracker abilities;
     // Start is called before the first frame update
     void Start()
@@ -165,7 +165,7 @@ public class PlayerController : MonoBehaviour
     {
         if(standing.activeSelf){
             Instantiate(bulletController, shotPoint.position, shotPoint.rotation).moveDirection = new Vector2(transform.localScale.x, 0);
-            standAnimator.SetTrigger(shootingAnimation);
+            standAnimator.SetTrigger(Shooting_Animation);
         } 
         else if (ball.activeSelf && abilities.GetCanDropBomb()) 
         {
@@ -190,18 +190,18 @@ public class PlayerController : MonoBehaviour
     private void SetMoveAnimation()
     {
         if(standing.activeSelf){
-            standAnimator.SetBool(isOnGroundAnimation, isOnGround);
-            standAnimator.SetFloat(moveSpeedAnimation, Mathf.Abs(rb.velocity.x));
+            standAnimator.SetBool(Is_On_Ground_Animation, isOnGround);
+            standAnimator.SetFloat(Move_Speed_Animation, Mathf.Abs(rb.velocity.x));
         } 
         else if (ball.activeSelf)
         {
-            ballanimator.SetFloat(moveSpeedAnimation, Mathf.Abs(rb.velocity.x));
+            ballanimator.SetFloat(Move_Speed_Animation, Mathf.Abs(rb.velocity.x));
         }
     }
 
     private bool CheckIfOnGround()
     {
-        isOnGround = Physics2D.OverlapCircle(groundPoint.position, groundRadius, whatIsGround);
+        isOnGround = Physics2D.OverlapCircle(groundPoint.position, Ground_Radius, whatIsGround);
         return isOnGround;
     }
 
@@ -237,7 +237,7 @@ public class PlayerController : MonoBehaviour
     private bool CanDoubleJump()
     {
         if (isOnGround) return true;
-        standAnimator.SetTrigger(doubleJumpAnimation);
+        standAnimator.SetTrigger(Double_Jump_Animation);
         return false;
     }
 }
