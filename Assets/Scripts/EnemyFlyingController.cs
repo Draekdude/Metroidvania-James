@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class EnemyFlyingController : MonoBehaviour
 {
+    const string Is_Attacking = "isAttacking";
+    [SerializeField] Animator animator;
     [SerializeField] float attackDistance;
     [SerializeField] float moveSpeed;
     [SerializeField] float turnSpeed;
@@ -19,10 +21,19 @@ public class EnemyFlyingController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsAttacking())
+        bool isAttacking = IsAttacking();
+        animator.SetBool(Is_Attacking, isAttacking);
+        if (isAttacking)
         {
             SetAttackRotation();
+            SetMovement();
         }
+    }
+
+    private void SetMovement()
+    {
+        //transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+        transform.position += -transform.right * moveSpeed * Time.deltaTime;
     }
 
     private void SetAttackRotation()

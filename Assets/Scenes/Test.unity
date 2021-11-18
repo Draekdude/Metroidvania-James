@@ -454,6 +454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a42f62ee9ae64b18ae9629a17eee48a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1271012555}
   attackDistance: 10
   moveSpeed: 5
   turnSpeed: 5
@@ -5272,6 +5273,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1271012553}
   - component: {fileID: 1271012554}
+  - component: {fileID: 1271012555}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -5344,6 +5346,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1271012555
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271012552}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c0e7632cf36434694a38b61608f17839, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1333303588
 GameObject:
   m_ObjectHideFlags: 0
