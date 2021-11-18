@@ -12,7 +12,7 @@ public class DamagePlayer : MonoBehaviour
     {
         if (other.gameObject.tag == Player_Tag)
         {
-            playerHealthController = other.gameObject.GetComponent<PlayerHealthController>();
+            playerHealthController = other.gameObject.GetComponentInParent<PlayerHealthController>();
             DealDamage();
         }
     }
@@ -21,7 +21,7 @@ public class DamagePlayer : MonoBehaviour
     {
         if (other.tag == Player_Tag)
         {
-            playerHealthController = other.gameObject.GetComponent<PlayerHealthController>();
+            playerHealthController = other.GetComponentInParent<PlayerHealthController>();
             DealDamage();
         }
     }
