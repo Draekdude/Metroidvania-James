@@ -45,6 +45,8 @@
      <Compile Include="Assets/Scripts/BombController.cs" />
      <Compile Include="Assets/Scripts/DestroyOverTime.cs" />
      <Compile Include="Assets/Scripts/EnemyHealthController.cs" />
+     <Compile Include="Assets/Scripts/PlayerHealthController.cs" />
+     <Compile Include="Assets/Scripts/DamagePlayer.cs" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />

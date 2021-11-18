@@ -105,9 +105,11 @@ GameObject:
   - component: {fileID: 1946881884881634395}
   - component: {fileID: 1946881884881634394}
   - component: {fileID: 1946881884881634393}
+  - component: {fileID: 3067097616536791454}
+  - component: {fileID: 1438680478}
   m_Layer: 0
   m_Name: Enemy Walker
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,7 +121,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946881884881634399}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 56.5, y: -1.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -186,6 +188,33 @@ MonoBehaviour:
   waitAtPoint: 1
   jumpForce: 10
   anim: {fileID: 1946881885203899169}
+--- !u!114 &3067097616536791454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946881884881634399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a5088594fb4c4c7eb5fc687c6991d4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 1
+--- !u!114 &1438680478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946881884881634399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b6edf065dc5e4d718206d56c1cb51d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalHealth: 3
+  deathEffect: {fileID: 1748199215487192504, guid: 2a4aa8c4222344e65b6fb751cdbb2168, type: 3}
 --- !u!1 &1946881885113753598
 GameObject:
   m_ObjectHideFlags: 0
