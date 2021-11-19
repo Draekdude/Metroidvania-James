@@ -9,10 +9,14 @@ public class PlayerHealthController : MonoBehaviour
     [SerializeField] int currentHealth;
     [SerializeField] int maxHealth;
 
+    UIController uIController;
+
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
+        uIController = FindObjectOfType<UIController>();
+        uIController.UpdateHealth(currentHealth, maxHealth);
     }
 
     // Update is called once per frame
@@ -29,5 +33,6 @@ public class PlayerHealthController : MonoBehaviour
             currentHealth = 0;
             gameObject.SetActive(false);
         }
+        uIController.UpdateHealth(currentHealth, maxHealth);
     }
 }
