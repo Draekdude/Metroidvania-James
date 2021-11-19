@@ -5,8 +5,11 @@ using UnityEngine;
 public class DamagePlayer : MonoBehaviour
 {
     [SerializeField] int damageAmount = 1;
+    [SerializeField] bool destroyOnDamage;
+    [SerializeField] GameObject destroyEffect;
     const string Player_Tag = "Player";
     PlayerHealthController playerHealthController;
+     
 
     void OnCollisionEnter2D(Collision2D other)
     {
@@ -29,5 +32,10 @@ public class DamagePlayer : MonoBehaviour
     void DealDamage()
     {
         playerHealthController.DamagePlayer(damageAmount);
+        if(destroyOnDamage)
+        {
+            if(destroyEffect != null) Instantiate(destroyEffect, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
     }
 }
