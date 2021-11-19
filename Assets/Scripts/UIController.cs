@@ -21,6 +21,6 @@ public class UIController : MonoBehaviour
     public void UpdateHealth(int currentHealth, int maxHealth)
     {
         healthSlider.maxValue = maxHealth;
-        healthSlider.value = currentHealth;
+        healthSlider.value = currentHealth > 0 ? currentHealth : 0;
     }
 }

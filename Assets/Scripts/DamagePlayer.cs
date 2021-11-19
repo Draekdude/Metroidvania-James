@@ -9,7 +9,6 @@ public class DamagePlayer : MonoBehaviour
     [SerializeField] GameObject destroyEffect;
     const string Player_Tag = "Player";
     PlayerHealthController playerHealthController;
-     
 
     void OnCollisionEnter2D(Collision2D other)
     {
@@ -31,6 +30,7 @@ public class DamagePlayer : MonoBehaviour
 
     void DealDamage()
     {
+        // sprite.color = Color.white;
         playerHealthController.DamagePlayer(damageAmount);
         if(destroyOnDamage)
         {
