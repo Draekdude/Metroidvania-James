@@ -49,6 +49,7 @@
      <Compile Include="Assets/Scripts/DamagePlayer.cs" />
      <Compile Include="Assets/Scripts/EnemyFlyingController.cs" />
      <Compile Include="Assets/Scripts/UIController.cs" />
+     <Compile Include="Assets/Scripts/RespawnController.cs" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />

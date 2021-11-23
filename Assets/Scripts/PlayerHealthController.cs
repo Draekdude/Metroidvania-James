@@ -14,6 +14,7 @@ public class PlayerHealthController : MonoBehaviour
     [SerializeField] SpriteRenderer[] playerSprites;
     [SerializeField] GameObject deathEffect;
 
+    RespawnController respawnController;
     UIController uIController;
     float invincibilityCounter = 0f;
     float flashCounter = 0f;
@@ -23,6 +24,7 @@ public class PlayerHealthController : MonoBehaviour
     {
         currentHealth = maxHealth;
         uIController = FindObjectOfType<UIController>();
+        respawnController = FindObjectOfType<RespawnController>();
         uIController.UpdateHealth(currentHealth, maxHealth);
     }
 
@@ -71,12 +73,17 @@ public class PlayerHealthController : MonoBehaviour
         invincibilityCounter = invincibilityTime;
     }
 
+    public void FillHealth()
+    {
+        currentHealth = maxHealth;
+        uIController.UpdateHealth(currentHealth, maxHealth);
+    }
+
     private void OnDie()
     {
         currentHealth = 0;
         if (deathEffect != null) Instantiate(deathEffect, transform.position, transform.rotation);
-        gameObject.SetActive(false);
-
+        respawnController.Respawn();
     }
 
     private bool IsDead()
