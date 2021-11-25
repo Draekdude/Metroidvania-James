@@ -31,6 +31,7 @@ public class RespawnController : MonoBehaviour
 
     IEnumerator RespawnCoroutine()
     {
+        DontDestroyOnLoad(gameObject);
         player.SetActive(false);
         yield return new WaitForSeconds(waitToRespawn);
         string sceneName = SceneManager.GetActiveScene().name;
@@ -38,5 +39,6 @@ public class RespawnController : MonoBehaviour
         player.transform.position = respawnPoint;
         player.SetActive(true);
         playerHealthController.FillHealth();
+        Destroy(gameObject);
     }
 }
