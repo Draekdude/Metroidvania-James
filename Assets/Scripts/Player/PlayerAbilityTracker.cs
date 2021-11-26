@@ -80,6 +80,10 @@ public class PlayerAbilityTracker : MonoBehaviour
     public void SetCurrentHealth(int value)
     {
         PlayerStats.currentHealth = value;
+        if(value > maxHealth)
+        {
+            PlayerStats.currentHealth = maxHealth;
+        }
     }
     public int GetMaxHealth()
     {

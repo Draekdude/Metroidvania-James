@@ -36,22 +36,23 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets/Scripts/Enemy/EnemyHealthController.cs" />
      <Compile Include="Assets/Scripts/Enemy/EnemyPatroller.cs" />
+     <Compile Include="Assets/Scripts/CheckPoint.cs" />
      <Compile Include="Assets/Scripts/AbilityUnlock.cs" />
+     <Compile Include="Assets/Scripts/Player/PlayerStats.cs" />
+     <Compile Include="Assets/Scripts/DamagePlayer.cs" />
+     <Compile Include="Assets/Scripts/Enemy/EnemyFlyingController.cs" />
      <Compile Include="Assets/Scripts/BulletController.cs" />
+     <Compile Include="Assets/Scripts/RespawnController.cs" />
      <Compile Include="Assets/Scripts/CameraController.cs" />
      <Compile Include="Assets/Scripts/Player/PlayerController.cs" />
+     <Compile Include="Assets/Scripts/Player/PlayerHealthController.cs" />
+     <Compile Include="Assets/Scripts/UIController.cs" />
      <Compile Include="Assets/Scripts/Player/PlayerAbilityTracker.cs" />
      <Compile Include="Assets/Scripts/BombController.cs" />
      <Compile Include="Assets/Scripts/DestroyOverTime.cs" />
-     <Compile Include="Assets/Scripts/Enemy/EnemyHealthController.cs" />
-     <Compile Include="Assets/Scripts/Player/PlayerHealthController.cs" />
-     <Compile Include="Assets/Scripts/DamagePlayer.cs" />
-     <Compile Include="Assets/Scripts/Enemy/EnemyFlyingController.cs" />
-     <Compile Include="Assets/Scripts/UIController.cs" />
-     <Compile Include="Assets/Scripts/RespawnController.cs" />
-     <Compile Include="Assets/Scripts/Player/PlayerStats.cs" />
-     <Compile Include="Assets/Scripts/CheckPoint.cs" />
+     <Compile Include="Assets/Scripts/HealthPickup.cs" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />

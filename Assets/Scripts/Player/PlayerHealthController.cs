@@ -77,7 +77,7 @@ public class PlayerHealthController : MonoBehaviour
     {
         if (invincibilityCounter > 0) return;
         abilities.SetCurrentHealth(abilities.GetCurrentHealth() - damageAmount);
-        uIController.UpdateHealth(abilities.GetCurrentHealth(), abilities.GetMaxHealth());
+        UpdateUI();
         if (IsDead())
         {
             OnDie();
@@ -86,10 +86,21 @@ public class PlayerHealthController : MonoBehaviour
         invincibilityCounter = invincibilityTime;
     }
 
+    private void UpdateUI()
+    {
+        uIController.UpdateHealth(abilities.GetCurrentHealth(), abilities.GetMaxHealth());
+    }
+
     public void FillHealth()
     {
         abilities.SetCurrentHealth(abilities.GetMaxHealth());
         uIController.UpdateHealth(PlayerStats.currentHealth, PlayerStats.maxHealth);
+    }
+
+    public void HealPlayer(int healAmount)
+    {
+        abilities.SetCurrentHealth(abilities.GetCurrentHealth() + healAmount);
+        UpdateUI();
     }
 
     private void OnDie()
