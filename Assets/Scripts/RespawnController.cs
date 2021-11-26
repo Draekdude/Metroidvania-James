@@ -9,13 +9,14 @@ public class RespawnController : MonoBehaviour
 
     GameObject player;
     PlayerHealthController playerHealthController;
-    Vector3 respawnPoint;
+    PlayerAbilityTracker abilities;
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<PlayerController>().gameObject;
         playerHealthController = FindObjectOfType<PlayerHealthController>();
-        respawnPoint = player.transform.position;
+        abilities = FindObjectOfType<PlayerAbilityTracker>();
+        player.transform.position = abilities.GetSpawnPoint();
     }
 
     // Update is called once per frame
@@ -36,8 +37,7 @@ public class RespawnController : MonoBehaviour
         yield return new WaitForSeconds(waitToRespawn);
         string sceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(sceneName);
-        player.transform.position = respawnPoint;
-        player.SetActive(true);
+        print("Died at: " + abilities.GetSpawnPoint().x);
         playerHealthController.FillHealth();
         Destroy(gameObject);
     }

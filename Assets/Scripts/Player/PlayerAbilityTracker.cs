@@ -10,6 +10,7 @@ public class PlayerAbilityTracker : MonoBehaviour
     [SerializeField] bool canDropBomb;
     [SerializeField] int currentHealth;
     [SerializeField] int maxHealth;
+    [SerializeField] Transform spawnPoint;
 
     void Awake()
     {
@@ -27,6 +28,8 @@ public class PlayerAbilityTracker : MonoBehaviour
         PlayerStats.canDropBomb = canDropBomb;
         PlayerStats.currentHealth = currentHealth;
         PlayerStats.maxHealth = maxHealth;
+        Vector3 spawn = new Vector3(spawnPoint.position.x, spawnPoint.position.y, spawnPoint.position.z);
+        PlayerStats.spawnPoint = spawn;
         PlayerStats.isInitialized = true;
     }
 
@@ -86,5 +89,16 @@ public class PlayerAbilityTracker : MonoBehaviour
     public void SetMaxHealth(int value)
     {
         PlayerStats.maxHealth = value;
+    }
+
+    public Vector3 GetSpawnPoint()
+    {
+        return PlayerStats.spawnPoint;
+    }
+
+    public void SetSpawnPoint(Vector3 value)
+    {
+        Vector3 newLocation = new Vector3(value.x, value.y, value.z);
+        PlayerStats.spawnPoint = newLocation;
     }
 }

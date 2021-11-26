@@ -38,7 +38,7 @@ public class PlayerHealthController : MonoBehaviour
     {
         uIController = FindObjectOfType<UIController>();
         respawnController = FindObjectOfType<RespawnController>();
-        uIController.UpdateHealth(PlayerStats.currentHealth, PlayerStats.maxHealth);
+        uIController.UpdateHealth(abilities.GetCurrentHealth(), abilities.GetMaxHealth());
     }
 
     // Update is called once per frame
@@ -76,8 +76,8 @@ public class PlayerHealthController : MonoBehaviour
     public void DamagePlayer(int damageAmount)
     {
         if (invincibilityCounter > 0) return;
-        PlayerStats.currentHealth -= damageAmount;
-        uIController.UpdateHealth(PlayerStats.currentHealth, PlayerStats.maxHealth);
+        abilities.SetCurrentHealth(abilities.GetCurrentHealth() - damageAmount);
+        uIController.UpdateHealth(abilities.GetCurrentHealth(), abilities.GetMaxHealth());
         if (IsDead())
         {
             OnDie();
@@ -88,7 +88,7 @@ public class PlayerHealthController : MonoBehaviour
 
     public void FillHealth()
     {
-        PlayerStats.currentHealth = PlayerStats.maxHealth;
+        abilities.SetCurrentHealth(abilities.GetMaxHealth());
         uIController.UpdateHealth(PlayerStats.currentHealth, PlayerStats.maxHealth);
     }
 
@@ -101,6 +101,6 @@ public class PlayerHealthController : MonoBehaviour
 
     private bool IsDead()
     {
-        return PlayerStats.currentHealth <= 0;
+        return abilities.GetCurrentHealth() <= 0;
     }
 }

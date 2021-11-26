@@ -11,4 +11,5 @@ public static class PlayerStats
     public static bool canBecomeBall { get; set; }
     public static int currentHealth { get; set; }
     public static int maxHealth { get; set; }
+    public static Vector3 spawnPoint { get; set; }
 }
