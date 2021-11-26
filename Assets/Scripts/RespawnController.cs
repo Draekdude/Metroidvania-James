@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class RespawnController : MonoBehaviour
 {
     [SerializeField] float waitToRespawn;
-
+    [SerializeField] GameObject playerDeathEffect;
     GameObject player;
     PlayerHealthController playerHealthController;
     PlayerAbilityTracker abilities;
@@ -34,6 +34,11 @@ public class RespawnController : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         player.SetActive(false);
+
+        if(playerDeathEffect != null)
+        {
+            Instantiate(playerDeathEffect, player.transform.position, player.transform.rotation);
+        }
         yield return new WaitForSeconds(waitToRespawn);
         string sceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(sceneName);
