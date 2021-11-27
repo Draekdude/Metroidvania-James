@@ -11,12 +11,14 @@ public class PlayerAbilityTracker : MonoBehaviour
     [SerializeField] int currentHealth;
     [SerializeField] int maxHealth;
     [SerializeField] Transform spawnPoint;
+    [SerializeField] bool reset;
 
     void Awake()
     {
-        if (!PlayerStats.isInitialized)
+        if (!PlayerStats.isInitialized || reset)
         {
             InitializePlayerStats();
+            reset = false;
         }
     }
 

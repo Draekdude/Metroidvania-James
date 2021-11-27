@@ -12,8 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float jumpForce = 20f;
     [SerializeField] Transform groundPoint;
     [SerializeField] LayerMask whatIsGround;
-    [SerializeField] Animator standAnimator;
-    [SerializeField] Animator ballanimator;
+    [SerializeField] public Animator standAnimator;
+    [SerializeField] public Animator ballAnimator;
     [SerializeField] BulletController bulletController;
     [SerializeField] Transform shotPoint;
     [SerializeField] float dashSpeed, dashTime;
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float waitToBall;
     [SerializeField] Transform bombPoint;
     [SerializeField] GameObject bomb;
-
+    public bool canMove = true;
 
     bool isBallActivating;
     bool isBallDeactivating;
@@ -58,40 +58,27 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckIfOnGround();
-        ableToDash = canDash();
-        if (dashCounter > 0)
+        if(canMove)
         {
-            print("can dash: " + abilities.GetCanDash());
-            Dash();
+            CheckIfOnGround();
+            ableToDash = canDash();
+            if (dashCounter > 0)
+            {
+                print("can dash: " + abilities.GetCanDash());
+                Dash();
+            }
+            else
+            {
+                Move();
+                Jump();
+            }
         }
         else
         {
-            Move();
-            Jump();
+            rb.velocity = Vector2.zero;
         }
+        SetMoveAnimation();
         if(abilities.GetCanBecomeBall()) SetBallStatus();
-    }
-
-    private void SetBallStatus()
-    {
-        if (isBallActivating || isBallDeactivating)
-        {
-            ballCounter -= Time.deltaTime;
-            if (ballCounter <= 0)
-            {
-                if (isBallActivating)
-                {
-                    ball.SetActive(true);
-                    standing.SetActive(false);
-                }
-                else if (isBallDeactivating)
-                {
-                    ball.SetActive(false);
-                    standing.SetActive(true);
-                }
-            }
-        }
     }
 
     public bool canDash() 
@@ -162,6 +149,27 @@ public class PlayerController : MonoBehaviour
         afterImageCounter = timeBetweenAfterImages;
     }
 
+    private void SetBallStatus()
+    {
+        if (isBallActivating || isBallDeactivating)
+        {
+            ballCounter -= Time.deltaTime;
+            if (ballCounter <= 0)
+            {
+                if (isBallActivating)
+                {
+                    ball.SetActive(true);
+                    standing.SetActive(false);
+                }
+                else if (isBallDeactivating)
+                {
+                    ball.SetActive(false);
+                    standing.SetActive(true);
+                }
+            }
+        }
+    }
+
     private void Shoot()
     {
         if(standing.activeSelf){
@@ -196,7 +204,7 @@ public class PlayerController : MonoBehaviour
         } 
         else if (ball.activeSelf)
         {
-            ballanimator.SetFloat(Move_Speed_Animation, Mathf.Abs(rb.velocity.x));
+            ballAnimator.SetFloat(Move_Speed_Animation, Mathf.Abs(rb.velocity.x));
         }
     }
 
@@ -210,7 +218,6 @@ public class PlayerController : MonoBehaviour
     {
         rb.velocity = new Vector2(movement.x * moveSpeed, rb.velocity.y);
         FacePlayerTowardsMovement();
-        SetMoveAnimation();
     }
 
     private void FacePlayerTowardsMovement()
