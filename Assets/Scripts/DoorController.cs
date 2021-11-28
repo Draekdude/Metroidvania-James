@@ -14,6 +14,7 @@ public class DoorController : MonoBehaviour
 
     PlayerController player;
     PlayerAbilityTracker abilityTracker;
+    UIController uiController;
     bool isOpen = false;
     bool playerExiting;
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class DoorController : MonoBehaviour
     {
         player = FindObjectOfType<PlayerController>();
         abilityTracker = FindObjectOfType<PlayerAbilityTracker>();
+        uiController = FindObjectOfType<UIController>();
     }
 
     // Update is called once per frame
@@ -72,10 +74,12 @@ public class DoorController : MonoBehaviour
         playerExiting = true;
         player.standAnimator.enabled = false;
         //player.ballAnimator.enabled = false;
+        uiController.StartFadeToBlack();
         yield return new WaitForSeconds(1.5f);
         abilityTracker.SetSpawnPoint(exitPoint.position);
         player.canMove = true;
         player.standAnimator.enabled = true;
         SceneManager.LoadScene(levelToLoad);
+        uiController.StartFadeFromBlack();
     }
 }

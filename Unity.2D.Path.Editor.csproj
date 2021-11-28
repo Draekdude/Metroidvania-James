@@ -93,8 +93,8 @@
      <Compile Include="Library\PackageCache\com.unity.2d.path@4.0.2\Editor\IMGUI\GUIFramework\CommandAction.cs" />
      <Compile Include="Library\PackageCache\com.unity.2d.path@4.0.2\Editor\EditablePath\EditablePathExtensions.cs" />
      <Compile Include="Library\PackageCache\com.unity.2d.path@4.0.2\Editor\IMGUI\GUIFramework\LayoutData.cs" />
-     <Compile Include="Library\PackageCache\com.unity.2d.path@4.0.2\Editor\EditablePath\ControlPoint.cs" />
      <Compile Include="Library\PackageCache\com.unity.2d.path@4.0.2\Editor\IMGUI\GUIFramework\GUISystem.cs" />
+     <Compile Include="Library\PackageCache\com.unity.2d.path@4.0.2\Editor\EditablePath\ControlPoint.cs" />
      <None Include="Library\PackageCache\com.unity.2d.path@4.0.2\Editor\Unity.2D.Path.Editor.asmdef" />
  <Reference Include="UnityEngine">
  <HintPath>/Applications/Unity/Hub/Editor/2020.3.19f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
