@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BossHealthController : MonoBehaviour
 {
     [SerializeField] Slider bossHealthSlider;
-    [SerializeField] int currentHealth = 30;
+    [SerializeField] public int currentHealth = 30;
     [SerializeField] PhantomBoss boss;
 
     // Start is called before the first frame update

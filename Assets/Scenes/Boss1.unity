@@ -15931,7 +15931,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &580855191
 Transform:
   m_ObjectHideFlags: 0
@@ -15965,6 +15965,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camPosition: {fileID: 1818639127}
   camSpeed: 5
+  threshold1: 25
+  threshold2: 5
+  activeTime: 5
+  fadeOutTime: 0.5
+  inactiveTime: 1
+  spawnPoints:
+  - {fileID: 1866926551}
+  - {fileID: 517538874}
+  - {fileID: 111338378}
+  - {fileID: 14125803}
+  - {fileID: 2074167766}
+  moveSpeed: 0
+  animator: {fileID: 1672099082}
+  boss: {fileID: 1672099078}
 --- !u!1 &795044480
 GameObject:
   m_ObjectHideFlags: 0
@@ -15999,7 +16013,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
