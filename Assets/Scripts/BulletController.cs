@@ -6,7 +6,8 @@ using System;
 
 public class BulletController : MonoBehaviour
 {
-    const string Enemy = "Enemy";
+    const string ENEMY = "Enemy";
+    const string BOSS = "Boss";
     [SerializeField] float bulletSpeed;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] GameObject impactEffect;
@@ -26,9 +27,13 @@ public class BulletController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == Enemy) 
+        if (other.tag == ENEMY) 
         {
             other.GetComponent<EnemyHealthController>().DamageEnemy(damageAmount);
+        }
+        if (other.tag == BOSS) 
+        {
+            other.GetComponent<BossHealthController>().TakeDamage(damageAmount);
         }
         if(impactEffect != null) Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(gameObject);

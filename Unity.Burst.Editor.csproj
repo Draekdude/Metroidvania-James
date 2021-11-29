@@ -9,10 +9,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{64a4ae8b-c82a-e0d2-8d04-d6010fdbc394}</ProjectGuid>
+    <ProjectGuid>{6ba64b10-e3b3-0b48-933c-0415a62c50d3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Unity.2D.PixelPerfect.Editor</AssemblyName>
+    <AssemblyName>Unity.Burst.Editor</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -26,7 +26,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -36,10 +36,19 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Library/PackageCache/com.unity.2d.pixel-perfect@5.0.1/Editor/PixelPerfectCameraEditor.cs" />
-     <Compile Include="Library/PackageCache/com.unity.2d.pixel-perfect@5.0.1/Editor/CinemachinePixelPerfectEditor.cs" />
-     <Compile Include="Library/PackageCache/com.unity.2d.pixel-perfect@5.0.1/Editor/ObjectMenuCreation/GameObjectCreation.cs" />
-     <None Include="Library/PackageCache/com.unity.2d.pixel-perfect@5.0.1/Editor/Unity.2D.PixelPerfect.Editor.asmdef" />
+     <Compile Include="Library/PackageCache/com.unity.burst@1.6.0/Editor/BurstDisassembler.cs" />
+     <Compile Include="Library/PackageCache/com.unity.burst@1.6.0/Editor/BurstDisassembler.Core.cs" />
+     <Compile Include="Library/PackageCache/com.unity.burst@1.6.0/Editor/BurstDisassembler.Core.x86.cs" />
+     <Compile Include="Library/PackageCache/com.unity.burst@1.6.0/Editor/BurstDisassembler.Core.ARM64.cs" />
+     <Compile Include="Library/PackageCache/com.unity.burst@1.6.0/Editor/BurstAotCompiler.cs" />
+     <Compile Include="Library/PackageCache/com.unity.burst@1.6.0/Editor/BurstDisassembler.Core.Wasm.cs" />
+     <Compile Include="Library/PackageCache/com.unity.burst@1.6.0/Editor/BurstLoader.cs" />
+     <Compile Include="Library/PackageCache/com.unity.burst@1.6.0/Editor/LongTextArea.cs" />
+     <Compile Include="Library/PackageCache/com.unity.burst@1.6.0/Editor/BurstDisassembler.Core.LLVMIR.cs" />
+     <Compile Include="Library/PackageCache/com.unity.burst@1.6.0/Editor/BurstInspectorGUI.cs" />
+     <Compile Include="Library/PackageCache/com.unity.burst@1.6.0/Editor/BurstAotSettings.cs" />
+     <Compile Include="Library/PackageCache/com.unity.burst@1.6.0/Editor/BurstMenu.cs" />
+     <None Include="Library/PackageCache/com.unity.burst@1.6.0/Editor/Unity.Burst.Editor.asmdef" />
     <Reference Include="UnityEngine">
         <HintPath>/Applications/Unity/Hub/Editor/2021.2.4f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -711,9 +720,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Unity.2D.PixelPerfect.csproj">
-      <Project>{5578c2d5-86bc-12de-8807-764f3c29a2bf}</Project>
-      <Name>Unity.2D.PixelPerfect</Name>
+    <ProjectReference Include="Unity.Burst.csproj">
+      <Project>{ac2c1969-46a4-1176-ac7f-79b23ba0d1ff}</Project>
+      <Name>Unity.Burst</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{c7b81733-4bea-d60f-98c7-b85cee35a89d}</Project>

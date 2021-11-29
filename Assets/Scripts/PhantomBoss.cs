@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GhostBoss : MonoBehaviour
+public class PhantomBoss : MonoBehaviour
 {
     [SerializeField] Transform camPosition;
     [SerializeField] float camSpeed;
@@ -20,5 +20,10 @@ public class GhostBoss : MonoBehaviour
     void Update()
     {
         cameraController.transform.position = Vector3.MoveTowards(cameraController.transform.position, camPosition.transform.position, camSpeed * Time.deltaTime);
+    }
+
+    public void EndBattle()
+    {
+        gameObject.SetActive(false);
     }
 }

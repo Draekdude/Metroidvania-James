@@ -7,6 +7,11 @@ public class BossActivator : MonoBehaviour
 {
     [SerializeField] GameObject bossToActivate;
 
+    void Start()
+    {
+        bossToActivate.SetActive(false);
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Player")
