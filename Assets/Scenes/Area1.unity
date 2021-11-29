@@ -10233,7 +10233,7 @@ GameObject:
   - component: {fileID: 1789249632}
   - component: {fileID: 1789249631}
   m_Layer: 0
-  m_Name: Visuals
+  m_Name: Ambiance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13042,6 +13042,10 @@ PrefabInstance:
     - target: {fileID: 67201424059517795, guid: b1f508f2ba1b34b0abfe5bef06034969, type: 3}
       propertyPath: m_Name
       value: UI Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736303143068454275, guid: b1f508f2ba1b34b0abfe5bef06034969, type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5345262468309746066, guid: b1f508f2ba1b34b0abfe5bef06034969, type: 3}
       propertyPath: m_Pivot.x
