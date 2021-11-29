@@ -73,13 +73,12 @@ public class DoorController : MonoBehaviour
     {
         playerExiting = true;
         player.standAnimator.enabled = false;
-        //player.ballAnimator.enabled = false;
-        uiController.StartFadeToBlack();
+        FindObjectOfType<UIController>().StartFadeToBlack();
         yield return new WaitForSeconds(1.5f);
         abilityTracker.SetSpawnPoint(exitPoint.position);
         player.canMove = true;
         player.standAnimator.enabled = true;
+        FindObjectOfType<UIController>().StartFadeFromBlack();
         SceneManager.LoadScene(levelToLoad);
-        uiController.StartFadeFromBlack();
     }
 }

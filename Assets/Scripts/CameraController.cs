@@ -37,6 +37,10 @@ public class CameraController : MonoBehaviour
                 GetYPositionClampedToBoxBoundsMinMax(),
                 transform.position.z);
         }
+        else 
+        {
+            player = FindObjectOfType<PlayerController>();
+        }
     }
 
     private float GetYPositionClampedToBoxBoundsMinMax()

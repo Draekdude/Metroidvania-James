@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
+
+    // static private UIController uIController;
+    [SerializeField] GameObject prefab;
     [SerializeField] Slider healthSlider;
     [SerializeField] Image fadeScreen;
     [SerializeField] float fadeSpeed = 2f;
@@ -13,10 +16,24 @@ public class UIController : MonoBehaviour
     const float WHITE = 0f;
     bool fadeToBlack;
     bool fadeFromBlack;
+    // static bool hasSpawned = false;
+
+    // private void Awake()
+    // {
+    //     if(uIController != null) return;
+
+    // }
+
+    // private void SpawnPersistentObjects()
+    // {
+    //     GameObject persistentObject = Instantiate(prefab);
+    //     DontDestroyOnLoad(persistentObject);
+    // }
     // Start is called before the first frame update
     void Start()
     {
-        
+        fadeScreen.color = SetTransperency(BLACK);
+        fadeFromBlack = true;
     }
 
     // Update is called once per frame
@@ -46,6 +63,11 @@ public class UIController : MonoBehaviour
     {
         float a = Mathf.MoveTowards(fadeScreen.color.a, newValue, fadeSpeed * Time.deltaTime);
         fadeScreen.color = new Color(fadeScreen.color.r, fadeScreen.color.g, fadeScreen.color.b, a);
+    }
+
+    private Color SetTransperency(float value)
+    {
+        return new Color(fadeScreen.color.r, fadeScreen.color.g, fadeScreen.color.b, value);
     }
 
     public void UpdateHealth(int currentHealth, int maxHealth)
