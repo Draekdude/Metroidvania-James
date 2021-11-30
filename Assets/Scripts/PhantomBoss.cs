@@ -66,7 +66,7 @@ public class PhantomBoss : MonoBehaviour
         return bossHealthController.currentHealth > threshold1;
     }
 
-    private bool ShouldMoveTowardsPlayer()
+    private bool ShouldMoveTowardsTargetPoint()
     {
         return Vector3.Distance(boss.position, targetPoint.position) > attackDistance;
     }
@@ -80,44 +80,47 @@ public class PhantomBoss : MonoBehaviour
     {
         if (activeCounter > 0)
         {
+            activeCounter -= Time.deltaTime;
             if (ShouldBossVanishBegin()) BossVanishBegin();
         }
         else if (fadeCounter > 0)
         {
+            fadeCounter -= Time.deltaTime;
             if(ShouldBossVanish()) BossVanish();
         }
         else if (inactiveCounter > 0)
         {
+            inactiveCounter -= Time.deltaTime;
             if(ShouldBossSetNewSpawnPoint()) SetNewSpawnPoint();
         }
     }
 
     private void SecondAttackPhase()
     {
-        if (ShouldMoveTowardsPlayer())
+        if (ShouldMoveTowardsTargetPoint())
         {
             MoveTowardsTargetPoint();
-            if (!ShouldMoveTowardsPlayer()) BossVanishBegin();
-        }
+            if (!ShouldMoveTowardsTargetPoint()) BossVanishBegin();
+        } 
         else if (fadeCounter > 0)
         {
+            fadeCounter -= Time.deltaTime;
             if(ShouldBossVanish()) BossVanish();
         }
-        else if (inactiveCounter > 0)
+        else //if (inactiveCounter > 0) //commented this out so boss wouldn't just sit there
         {
+            inactiveCounter -= Time.deltaTime;
             if(ShouldBossSetNewSpawnPoint()) SetNewSpawnPoint();
         }
     }
 
     private bool ShouldBossSetNewSpawnPoint()
     {
-        inactiveCounter -= Time.deltaTime;
         return inactiveCounter <= 0;
     }
 
     private bool ShouldBossVanish()
     {
-        fadeCounter -= Time.deltaTime;
         return fadeCounter <= 0;
     }
 
@@ -155,7 +158,6 @@ public class PhantomBoss : MonoBehaviour
 
     private bool ShouldBossVanishBegin()
     {
-        activeCounter -= Time.deltaTime;
         return activeCounter <= 0;
     }
 
