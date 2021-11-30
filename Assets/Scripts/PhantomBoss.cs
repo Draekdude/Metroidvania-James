@@ -22,6 +22,7 @@ public class PhantomBoss : MonoBehaviour
     float activeCounter;
     float fadeCounter;
     float inactiveCounter;
+    float attackDistance = 0.02f;
 
     CameraController cameraController;
 
@@ -41,38 +42,127 @@ public class PhantomBoss : MonoBehaviour
     void Update()
     {
         cameraController.transform.position = Vector3.MoveTowards(cameraController.transform.position, camPosition.transform.position, camSpeed * Time.deltaTime);
-        if (bossHealthController.currentHealth > threshold1) 
+        if (IsFirstAttackPhaseActive())
         {
-            if (activeCounter > 0)
+            FirstAttackPhase();
+        }
+        else 
+        {
+            if(targetPoint == null)
             {
-                activeCounter -= Time.deltaTime;
-                if (activeCounter <= 0)
-                {
-                    fadeCounter = fadeOutTime;
-                    animator.SetTrigger(VANISH_ANIMATION);
-                }
-            }
-            else if(fadeCounter > 0)
+                targetPoint = boss;
+                fadeCounter = fadeOutTime;
+                animator.SetTrigger(VANISH_ANIMATION);
+            } 
+            else 
             {
-                fadeCounter -= Time.deltaTime;
-                if(fadeCounter <= 0)
-                {
-                    boss.gameObject.SetActive(false);
-                    inactiveCounter = inactiveTime;
-                }
-            }
-            else if (inactiveCounter > 0)
-            {
-                inactiveCounter -= Time.deltaTime;
-                if (inactiveCounter <= 0)
-                {
-                    int newSpawnPoint = UnityEngine.Random.Range(0, spawnPoints.Length);
-                    boss.position = spawnPoints[newSpawnPoint].position;
-                    boss.gameObject.SetActive(true);
-                    activeCounter = activeTime;
-                }
+                SecondAttackPhase();
             }
         }
+    }
+
+    private bool IsFirstAttackPhaseActive()
+    {
+        return bossHealthController.currentHealth > threshold1;
+    }
+
+    private bool ShouldMoveTowardsPlayer()
+    {
+        return Vector3.Distance(boss.position, targetPoint.position) > attackDistance;
+    }
+
+    private void MoveTowardsTargetPoint()
+    {
+        boss.position = Vector3.MoveTowards(boss.position, targetPoint.position, moveSpeed * Time.deltaTime);
+    }
+
+    private void FirstAttackPhase()
+    {
+        if (activeCounter > 0)
+        {
+            if (ShouldBossVanishBegin()) BossVanishBegin();
+        }
+        else if (fadeCounter > 0)
+        {
+            if(ShouldBossVanish()) BossVanish();
+        }
+        else if (inactiveCounter > 0)
+        {
+            if(ShouldBossSetNewSpawnPoint()) SetNewSpawnPoint();
+        }
+    }
+
+    private void SecondAttackPhase()
+    {
+        if (ShouldMoveTowardsPlayer())
+        {
+            MoveTowardsTargetPoint();
+            if (!ShouldMoveTowardsPlayer()) BossVanishBegin();
+        }
+        else if (fadeCounter > 0)
+        {
+            if(ShouldBossVanish()) BossVanish();
+        }
+        else if (inactiveCounter > 0)
+        {
+            if(ShouldBossSetNewSpawnPoint()) SetNewSpawnPoint();
+        }
+    }
+
+    private bool ShouldBossSetNewSpawnPoint()
+    {
+        inactiveCounter -= Time.deltaTime;
+        return inactiveCounter <= 0;
+    }
+
+    private bool ShouldBossVanish()
+    {
+        fadeCounter -= Time.deltaTime;
+        return fadeCounter <= 0;
+    }
+
+    private void BossVanish()
+    {
+        boss.gameObject.SetActive(false);
+        inactiveCounter = inactiveTime;
+    }
+
+    private Transform GetRandomSpawnPoint()
+    {
+        return spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)];
+    }
+
+    private void SetNewSpawnPoint()
+    {
+        boss.position = GetRandomSpawnPoint().position;
+        boss.gameObject.SetActive(true);
+        if(IsFirstAttackPhaseActive()) {
+            activeCounter = activeTime;
+        } else {
+            targetPoint = GetDifferentRandomSpawnPoint(boss);
+        }
+    }
+
+    private Transform GetDifferentRandomSpawnPoint(Transform currentPoint)
+    {
+        Transform newPoint = GetRandomSpawnPoint();
+        while (newPoint == currentPoint)
+        {
+            newPoint = GetRandomSpawnPoint();
+        }
+        return newPoint;
+    }
+
+    private bool ShouldBossVanishBegin()
+    {
+        activeCounter -= Time.deltaTime;
+        return activeCounter <= 0;
+    }
+
+    private void BossVanishBegin()
+    {
+        fadeCounter = fadeOutTime;
+        animator.SetTrigger(VANISH_ANIMATION);
     }
 
     public void EndBattle()

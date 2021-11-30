@@ -15976,7 +15976,7 @@ MonoBehaviour:
   - {fileID: 111338378}
   - {fileID: 14125803}
   - {fileID: 2074167766}
-  moveSpeed: 0
+  moveSpeed: 10
   animator: {fileID: 1672099082}
   boss: {fileID: 1672099078}
 --- !u!1 &795044480
