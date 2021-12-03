@@ -42,6 +42,7 @@
      <Compile Include="Assets/Scripts/CheckPoint.cs" />
      <Compile Include="Assets/Scripts/BossHealthController.cs" />
      <Compile Include="Assets/Scripts/AbilityUnlock.cs" />
+     <Compile Include="Assets/Scripts/BossBullet.cs" />
      <Compile Include="Assets/Scripts/Player/PlayerStats.cs" />
      <Compile Include="Assets/Scripts/HealthPickup.cs" />
      <Compile Include="Assets/Scripts/BossActivator.cs" />

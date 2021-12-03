@@ -15979,6 +15979,10 @@ MonoBehaviour:
   moveSpeed: 10
   animator: {fileID: 1672099082}
   boss: {fileID: 1672099078}
+  timeBetweenShots1: 1
+  timeBetweenShots2: 0.5
+  bullet: {fileID: 3909331908803303796, guid: a4197342fb02049fc82e13647773d5c8, type: 3}
+  shotPoint: {fileID: 1558329298}
 --- !u!1 &795044480
 GameObject:
   m_ObjectHideFlags: 0
@@ -16586,6 +16590,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1558329297
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1558329298}
+  m_Layer: 13
+  m_Name: ShotPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1558329298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558329297}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.44, y: -0.14, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1672099078}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1608871054
 GameObject:
   m_ObjectHideFlags: 0
@@ -16621,8 +16656,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.3114, y: -7.6953125}
-  m_SizeDelta: {x: 883.339, y: 36.9287}
+  m_AnchoredPosition: {x: -1.0797, y: -36.695312}
+  m_SizeDelta: {x: 789.6123, y: 36.9287}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1608871056
 MonoBehaviour:
@@ -16675,7 +16710,7 @@ GameObject:
   - component: {fileID: 1672099080}
   - component: {fileID: 1672099081}
   - component: {fileID: 1672099082}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: The Phantom
   m_TagString: Boss
   m_Icon: {fileID: 0}
@@ -16693,7 +16728,8 @@ Transform:
   m_LocalPosition: {x: 292.4, y: 5.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1558329298}
   m_Father: {fileID: 580855191}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17169,8 +17205,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.0935, y: 3}
-  m_SizeDelta: {x: 2258.4214, y: 150.5956}
+  m_AnchoredPosition: {x: -0.8848, y: -26}
+  m_SizeDelta: {x: 2018.7915, y: 150.5956}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1901353384
 MonoBehaviour:
@@ -17346,7 +17382,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000026703, y: 277.7}
+  m_AnchoredPosition: {x: -0.000026703, y: 248.70001}
   m_SizeDelta: {x: 295.1729, y: 40.8126}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2094594780
@@ -17522,6 +17558,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2454888786300185465, guid: b1f508f2ba1b34b0abfe5bef06034969, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -727.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454888786300185465, guid: b1f508f2ba1b34b0abfe5bef06034969, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -537
+      objectReference: {fileID: 0}
     - target: {fileID: 5345262468309746066, guid: b1f508f2ba1b34b0abfe5bef06034969, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -17605,6 +17649,14 @@ PrefabInstance:
     - target: {fileID: 5345262468309746066, guid: b1f508f2ba1b34b0abfe5bef06034969, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5963605006018835416, guid: b1f508f2ba1b34b0abfe5bef06034969, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -776.89996
+      objectReference: {fileID: 0}
+    - target: {fileID: 5963605006018835416, guid: b1f508f2ba1b34b0abfe5bef06034969, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -479.59995
       objectReference: {fileID: 0}
     - target: {fileID: 9203537523924303427, guid: b1f508f2ba1b34b0abfe5bef06034969, type: 3}
       propertyPath: m_AnchorMax.x

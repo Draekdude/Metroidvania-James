@@ -17,6 +17,11 @@ public class PhantomBoss : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] Animator animator;
     [SerializeField] Transform boss;
+    [SerializeField] float timeBetweenShots1;
+    [SerializeField] float timeBetweenShots2;
+    [SerializeField] GameObject bullet;
+    [SerializeField] Transform shotPoint;
+    float shotCounter;
     Transform targetPoint;
     
     float activeCounter;
@@ -36,6 +41,7 @@ public class PhantomBoss : MonoBehaviour
         cameraController.enabled = false;
         activeCounter = activeTime;
         bossHealthController = FindObjectOfType<BossHealthController>();
+        shotCounter = timeBetweenShots1;
     }
 
     // Update is called once per frame
@@ -82,6 +88,8 @@ public class PhantomBoss : MonoBehaviour
         {
             activeCounter -= Time.deltaTime;
             if (ShouldBossVanishBegin()) BossVanishBegin();
+            shotCounter -= Time.deltaTime;
+            if (ShouldBossShoot()) BossShoot();
         }
         else if (fadeCounter > 0)
         {
@@ -91,7 +99,33 @@ public class PhantomBoss : MonoBehaviour
         else if (inactiveCounter > 0)
         {
             inactiveCounter -= Time.deltaTime;
-            if(ShouldBossSetNewSpawnPoint()) SetNewSpawnPoint();
+            if(ShouldBossSetNewSpawnPoint()) {
+                SetNewSpawnPoint();
+                shotCounter = timeBetweenShots1;
+            }
+        }
+    }
+
+    private bool ShouldBossShoot()
+    {
+        return shotCounter <= 0;
+    }
+
+    private void BossShoot()
+    {
+        shotCounter = GetShotCounter();
+        Instantiate(bullet, shotPoint.position, Quaternion.identity);
+    }
+
+    private float GetShotCounter()
+    {
+        if (IsFirstAttackPhaseActive())
+        {
+            return timeBetweenShots1;
+        }
+        else 
+        {
+            return timeBetweenShots2;
         }
     }
 
@@ -101,6 +135,8 @@ public class PhantomBoss : MonoBehaviour
         {
             MoveTowardsTargetPoint();
             if (!ShouldMoveTowardsTargetPoint()) BossVanishBegin();
+            shotCounter -= Time.deltaTime;
+            if (ShouldBossShoot()) BossShoot();
         } 
         else if (fadeCounter > 0)
         {
@@ -111,6 +147,7 @@ public class PhantomBoss : MonoBehaviour
         {
             inactiveCounter -= Time.deltaTime;
             if(ShouldBossSetNewSpawnPoint()) SetNewSpawnPoint();
+            shotCounter = GetShotCounter();
         }
     }
 
