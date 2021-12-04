@@ -1,3 +1,4 @@
+using System.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,6 +22,9 @@ public class PhantomBoss : MonoBehaviour
     [SerializeField] float timeBetweenShots2;
     [SerializeField] GameObject bullet;
     [SerializeField] Transform shotPoint;
+    [SerializeField] GameObject winObjects;
+    [SerializeField] GameObject hiddenCave;
+    bool battleEnded;
     float shotCounter;
     Transform targetPoint;
     
@@ -48,6 +52,19 @@ public class PhantomBoss : MonoBehaviour
     void Update()
     {
         cameraController.transform.position = Vector3.MoveTowards(cameraController.transform.position, camPosition.transform.position, camSpeed * Time.deltaTime);
+        if(battleEnded) {
+            fadeCounter -= Time.deltaTime;
+            if(fadeCounter < 0) {
+                if(winObjects != null)
+                {
+                    winObjects.SetActive(true);
+                    winObjects.transform.SetParent(null);
+                }
+                cameraController.enabled = true;
+                gameObject.SetActive(false);
+            }
+            return;
+        } 
         if (IsFirstAttackPhaseActive())
         {
             FirstAttackPhase();
@@ -206,6 +223,11 @@ public class PhantomBoss : MonoBehaviour
 
     public void EndBattle()
     {
-        gameObject.SetActive(false);
+        battleEnded = true;
+        hiddenCave.SetActive(false);
+        winObjects.SetActive(true);
+        animator.SetTrigger(VANISH_ANIMATION);
+        boss.GetComponent<Collider2D>().enabled = false;
+        FindObjectsOfType<BossBullet>().ToList().ForEach(x=> Destroy(x.gameObject));
     }
 }
