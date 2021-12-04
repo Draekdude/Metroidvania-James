@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class UIController : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class UIController : MonoBehaviour
     [SerializeField] Slider healthSlider;
     [SerializeField] Image fadeScreen;
     [SerializeField] float fadeSpeed = 2f;
+    [SerializeField] string mainMenuScene;
+    [SerializeField] GameObject pauseScreen;
 
     const float BLACK = 1f;
     const float WHITE = 0f;
@@ -87,4 +91,35 @@ public class UIController : MonoBehaviour
         fadeToBlack = false;
         fadeFromBlack = true;
     }
+
+    public void PauseUnpause()
+    {
+        if(!pauseScreen.activeInHierarchy)
+        {
+            Time.timeScale = 0;
+        } 
+        else 
+        {
+            Time.timeScale = 1;
+        }
+        pauseScreen.SetActive(!pauseScreen.activeInHierarchy);
+    }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene(mainMenuScene);
+    }
+
+    public void OnPauseUnpause()
+    {
+        PauseUnpause();
+        print("Pause");
+    }
+
+    public void OnGoToMainMenu()
+    {
+
+    }
+
+
 }

@@ -315,7 +315,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 322613895}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.28, y: -0.61, z: 0}
+  m_LocalPosition: {x: -15.04, y: -4.62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9940,6 +9940,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1487257046 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5419205418683879490, guid: b1f508f2ba1b34b0abfe5bef06034969, type: 3}
+  m_PrefabInstance: {fileID: 8367455535520576567}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 551124082d65d4a29aa2ca0d17ebe23f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1546483377
 GameObject:
   m_ObjectHideFlags: 0
@@ -12582,6 +12593,10 @@ PrefabInstance:
       value: Area2
       objectReference: {fileID: 0}
     - target: {fileID: 4958368361607151980, guid: 1d4243957f3034528a3d20042ce5a5c4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958368361607151980, guid: 1d4243957f3034528a3d20042ce5a5c4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -34.942
       objectReference: {fileID: 0}
@@ -12618,6 +12633,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8405895403364062680, guid: dca3756fe31a347cbb20be2f857d366e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1487257046}
+    - target: {fileID: 8405895403364062680, guid: dca3756fe31a347cbb20be2f857d366e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1487257046}
     - target: {fileID: 8405895403364062683, guid: dca3756fe31a347cbb20be2f857d366e, type: 3}
       propertyPath: reset
       value: 0
@@ -13078,10 +13101,6 @@ PrefabInstance:
     - target: {fileID: 67201424059517795, guid: b1f508f2ba1b34b0abfe5bef06034969, type: 3}
       propertyPath: m_Name
       value: UI Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 2736303143068454275, guid: b1f508f2ba1b34b0abfe5bef06034969, type: 3}
-      propertyPath: m_Color.a
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5345262468309746066, guid: b1f508f2ba1b34b0abfe5bef06034969, type: 3}
       propertyPath: m_Pivot.x

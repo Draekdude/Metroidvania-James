@@ -58,24 +58,21 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(canMove)
+        if(!canMove || Time.timeScale == 0) {
+            rb.velocity = Vector2.zero;
+            return;
+        }
+        CheckIfOnGround();
+        ableToDash = canDash();
+        if (dashCounter > 0)
         {
-            CheckIfOnGround();
-            ableToDash = canDash();
-            if (dashCounter > 0)
-            {
-                print("can dash: " + abilities.GetCanDash());
-                Dash();
-            }
-            else
-            {
-                Move();
-                Jump();
-            }
+            print("can dash: " + abilities.GetCanDash());
+            Dash();
         }
         else
         {
-            rb.velocity = Vector2.zero;
+            Move();
+            Jump();
         }
         SetMoveAnimation();
         if(abilities.GetCanBecomeBall()) SetBallStatus();
