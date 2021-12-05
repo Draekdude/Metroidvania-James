@@ -657,7 +657,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newGameScene: Area1
   continueButton: {fileID: 961988959}
-  playerAbilityTracker: {fileID: 0}
 --- !u!224 &1609892177 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8062417078222090427, guid: 2a48cb8e56bd34e0288d282f2d51b083, type: 3}
@@ -852,7 +851,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8062417078222090424, guid: 2a48cb8e56bd34e0288d282f2d51b083, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: NewGame
+      value: Continue
       objectReference: {fileID: 0}
     - target: {fileID: 8062417078222090424, guid: 2a48cb8e56bd34e0288d282f2d51b083, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
