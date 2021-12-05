@@ -8,6 +8,8 @@ public class BombController : MonoBehaviour
     [SerializeField] GameObject explosion;
     [SerializeField] float blastRadius;
     [SerializeField] LayerMask whatIsDestructible;
+    [SerializeField] int damageAmount;
+    [SerializeField] LayerMask whatToDamage;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,16 +22,32 @@ public class BombController : MonoBehaviour
         timeToExplode -= Time.deltaTime;
         if(timeToExplode <= 0)
         {
-            if(explosion != null)
+            if (explosion != null)
             {
                 Instantiate(explosion, transform.position, transform.rotation);
             }
             Destroy(gameObject);
-            Collider2D[] objectsToRemove = Physics2D.OverlapCircleAll(transform.position, blastRadius, whatIsDestructible);
-            foreach (var objectToRemove in objectsToRemove)
-            {
-                Destroy(objectToRemove.gameObject);
-            }
+            DestroyDestructibleObjects();
+            ApplyDamageToDamageableObjects();
+        }
+    }
+
+    private void DestroyDestructibleObjects()
+    {
+        Collider2D[] objectsToRemove = Physics2D.OverlapCircleAll(transform.position, blastRadius, whatIsDestructible);
+        foreach (var objectToRemove in objectsToRemove)
+        {
+            Destroy(objectToRemove.gameObject);
+        }
+    }
+
+    private void ApplyDamageToDamageableObjects()
+    {
+        Collider2D[] objectsToDamage = Physics2D.OverlapCircleAll(transform.position, blastRadius, whatToDamage);
+        foreach (var objectToDamage in objectsToDamage)
+        {
+            EnemyHealthController enemyHealthController = objectToDamage.GetComponent<EnemyHealthController>();
+            if(enemyHealthController != null) enemyHealthController.DamageEnemy(damageAmount);
         }
     }
 }
