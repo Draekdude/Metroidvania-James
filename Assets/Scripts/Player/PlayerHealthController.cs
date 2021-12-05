@@ -83,7 +83,7 @@ public class PlayerHealthController : MonoBehaviour
             OnDie();
             return;
         }
-        AudioManager.instance.PlaySoundEffectAdjusted(SoundName.PLAYER_DAMAGE);
+        AudioManager.instance.PlaySoundEffectAdjusted(SoundNames.PLAYER_DAMAGE);
         invincibilityCounter = invincibilityTime;
     }
 
@@ -109,7 +109,7 @@ public class PlayerHealthController : MonoBehaviour
         PlayerStats.currentHealth = 0;
         if (deathEffect != null) Instantiate(deathEffect, transform.position, transform.rotation);
         respawnController.Respawn();
-        AudioManager.instance.PlaySoundEffect(SoundName.PLAYER_DEATH);
+        AudioManager.instance.PlaySoundEffect(SoundNames.PLAYER_DEATH);
     }
 
     private bool IsDead()

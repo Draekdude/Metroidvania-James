@@ -10,7 +10,6 @@ public class DoorController : MonoBehaviour
     [SerializeField] Transform exitPoint;
     [SerializeField] float movePlayerSpeed;
     [SerializeField] string levelToLoad;
-    const string Door_Open_Animation = "isOpen";
 
     PlayerController player;
     PlayerAbilityTracker abilityTracker;
@@ -45,7 +44,7 @@ public class DoorController : MonoBehaviour
     {
         if(!isOpen)
         {
-            animator.SetBool(Door_Open_Animation, true);
+            animator.SetBool(AnimationNames.Door_Open_Animation, true);
             isOpen = true;
         }
     }
@@ -54,14 +53,14 @@ public class DoorController : MonoBehaviour
     {
         if(isOpen)
         {
-            animator.SetBool(Door_Open_Animation, false);
+            animator.SetBool(AnimationNames.Door_Open_Animation, false);
             isOpen = false;
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Player")
+        if(other.tag == TagNames.Player_Tag)
         {
             other.GetComponentInParent<PlayerController>().canMove = false;
             if(playerExiting) return;
@@ -79,6 +78,17 @@ public class DoorController : MonoBehaviour
         player.canMove = true;
         player.standAnimator.enabled = true;
         FindObjectOfType<UIController>().StartFadeFromBlack();
+
+        SetPlayerPrefs();
+
         SceneManager.LoadScene(levelToLoad);
+    }
+
+    private void SetPlayerPrefs()
+    {
+        PlayerPrefs.SetString(PlayerPrefNames.CONTINUE_LEVEL, levelToLoad);
+        PlayerPrefs.SetFloat(PlayerPrefNames.POSITION_X, exitPoint.position.x);
+        PlayerPrefs.SetFloat(PlayerPrefNames.POSITION_Y, exitPoint.position.y);
+        PlayerPrefs.SetFloat(PlayerPrefNames.POSITION_Z, exitPoint.position.z);
     }
 }

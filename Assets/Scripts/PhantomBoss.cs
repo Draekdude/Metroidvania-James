@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class PhantomBoss : MonoBehaviour
 {
-    const string VANISH_ANIMATION = "vanish";
     [SerializeField] Transform camPosition;
     [SerializeField] float camSpeed;
     [SerializeField] int threshold1;
@@ -77,7 +76,7 @@ public class PhantomBoss : MonoBehaviour
             {
                 targetPoint = boss;
                 fadeCounter = fadeOutTime;
-                animator.SetTrigger(VANISH_ANIMATION);
+                animator.SetTrigger(AnimationNames.VANISH_ANIMATION);
             } 
             else 
             {
@@ -220,7 +219,7 @@ public class PhantomBoss : MonoBehaviour
     private void BossVanishBegin()
     {
         fadeCounter = fadeOutTime;
-        animator.SetTrigger(VANISH_ANIMATION);
+        animator.SetTrigger(AnimationNames.VANISH_ANIMATION);
     }
 
     public void EndBattle()
@@ -228,7 +227,7 @@ public class PhantomBoss : MonoBehaviour
         battleEnded = true;
         hiddenCave.SetActive(false);
         winObjects.SetActive(true);
-        animator.SetTrigger(VANISH_ANIMATION);
+        animator.SetTrigger(AnimationNames.VANISH_ANIMATION);
         boss.GetComponent<Collider2D>().enabled = false;
         FindObjectsOfType<BossBullet>().ToList().ForEach(x=> Destroy(x.gameObject));
         AudioManager.instance.PlayLevelMusic();

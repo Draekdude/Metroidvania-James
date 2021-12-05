@@ -14,7 +14,7 @@ public class BossBullet : MonoBehaviour
     {
         player = FindObjectOfType<PlayerHealthController>();
         SetAttackRotation(player.transform);
-        AudioManager.instance.PlaySoundEffectAdjusted(SoundName.BOSS_SHOT);
+        AudioManager.instance.PlaySoundEffectAdjusted(SoundNames.BOSS_SHOT);
     }
 
     // Update is called once per frame
@@ -41,6 +41,6 @@ public class BossBullet : MonoBehaviour
             Instantiate(impactEffect, transform.position, transform.rotation);
             Destroy(gameObject);
         }
-        AudioManager.instance.PlaySoundEffectAdjusted(SoundName.BULLET_IMPACT);
+        AudioManager.instance.PlaySoundEffectAdjusted(SoundNames.BULLET_IMPACT);
     }
 }

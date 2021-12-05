@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class EnemyFlyingController : MonoBehaviour
 {
-    const string Is_Attacking = "isAttacking";
     [SerializeField] Animator animator;
     [SerializeField] float attackDistance;
     [SerializeField] float moveSpeed;
@@ -22,7 +21,7 @@ public class EnemyFlyingController : MonoBehaviour
     void Update()
     {
         bool isAttacking = IsAttacking();
-        animator.SetBool(Is_Attacking, isAttacking);
+        animator.SetBool(AnimationNames.Is_Attacking, isAttacking);
         if (isAttacking)
         {
             SetAttackRotation();

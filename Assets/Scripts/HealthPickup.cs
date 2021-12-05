@@ -18,7 +18,7 @@ public class HealthPickup : MonoBehaviour
                 Instantiate(healEffect, transform.position, Quaternion.identity);
             }
             Destroy(gameObject);
-            AudioManager.instance.PlaySoundEffect(SoundName.PICKUP);
+            AudioManager.instance.PlaySoundEffect(SoundNames.PICKUP);
         }
     }
 }

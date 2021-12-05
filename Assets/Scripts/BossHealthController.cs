@@ -25,10 +25,10 @@ public class BossHealthController : MonoBehaviour
         if(currentHealth <= 0)
         {
             boss.EndBattle();
-            AudioManager.instance.PlaySoundEffect(SoundName.BOSS_DEATH);
+            AudioManager.instance.PlaySoundEffect(SoundNames.BOSS_DEATH);
             return;
         }
         bossHealthSlider.value = currentHealth;
-        AudioManager.instance.PlaySoundEffect(SoundName.BOSS_IMPACT);
+        AudioManager.instance.PlaySoundEffect(SoundNames.BOSS_IMPACT);
     }
 }

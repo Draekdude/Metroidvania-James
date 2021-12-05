@@ -7,12 +7,11 @@ public class DamagePlayer : MonoBehaviour
     [SerializeField] int damageAmount = 1;
     [SerializeField] bool destroyOnDamage;
     [SerializeField] GameObject destroyEffect;
-    const string Player_Tag = "Player";
     PlayerHealthController playerHealthController;
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == Player_Tag)
+        if (other.gameObject.tag == TagNames.Player_Tag)
         {
             playerHealthController = other.gameObject.GetComponentInParent<PlayerHealthController>();
             DealDamage();
@@ -21,7 +20,7 @@ public class DamagePlayer : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == Player_Tag)
+        if (other.tag == TagNames.Player_Tag)
         {
             playerHealthController = other.GetComponentInParent<PlayerHealthController>();
             DealDamage();

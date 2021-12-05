@@ -54,7 +54,7 @@ public class AbilityUnlock : MonoBehaviour
         unlockText.text = unlockMessage;
         unlockText.gameObject.SetActive(true);
         Destroy(parent.gameObject, 3f);
-        AudioManager.instance.PlaySoundEffect(SoundName.PICKUP);
+        AudioManager.instance.PlaySoundEffect(SoundNames.PICKUP);
     }
 
 }

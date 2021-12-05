@@ -6,9 +6,6 @@ using System;
 
 public class BulletController : MonoBehaviour
 {
-    const string ENEMY = "Enemy";
-    const string BOSS = "Boss";
-    const string BULLET_IMPACT = "";
     [SerializeField] float bulletSpeed;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] GameObject impactEffect;
@@ -28,16 +25,16 @@ public class BulletController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == ENEMY) 
+        if (other.tag == TagNames.ENEMY) 
         {
             other.GetComponent<EnemyHealthController>().DamageEnemy(damageAmount);
         }
-        if (other.tag == BOSS) 
+        if (other.tag == TagNames.BOSS) 
         {
             other.GetComponent<BossHealthController>().TakeDamage(damageAmount);
         }
         if(impactEffect != null) Instantiate(impactEffect, transform.position, transform.rotation);
-        AudioManager.instance.PlaySoundEffectAdjusted(SoundName.BULLET_IMPACT);
+        AudioManager.instance.PlaySoundEffectAdjusted(SoundNames.BULLET_IMPACT);
         Destroy(gameObject);
     }
 

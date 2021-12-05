@@ -41,10 +41,6 @@ public class PlayerController : MonoBehaviour
     bool isOnGround;
     bool canDoubleJump;
     float dashCounter;
-    const string Is_On_Ground_Animation = "isOnGround";
-    const string Move_Speed_Animation = "speed";
-    const string Shooting_Animation = "shotFired";
-    const string Double_Jump_Animation = "doubleJump";
     const float Ground_Radius = 0.2f;
     PlayerAbilityTracker abilities;
 
@@ -97,7 +93,7 @@ public class PlayerController : MonoBehaviour
         {
             dashCounter = dashTime;
             ShowAfterImage();
-            AudioManager.instance.PlaySoundEffectAdjusted(SoundName.PLAYER_DASH);
+            AudioManager.instance.PlaySoundEffectAdjusted(SoundNames.PLAYER_DASH);
         }
     }
     public void OnMovement(InputAction.CallbackContext context)
@@ -158,13 +154,13 @@ public class PlayerController : MonoBehaviour
             {
                 if (isBallActivating && !ball.activeSelf)
                 {
-                    AudioManager.instance.PlaySoundEffect(SoundName.PLAYER_BALL);
+                    AudioManager.instance.PlaySoundEffect(SoundNames.PLAYER_BALL);
                     ball.SetActive(true);
                     standing.SetActive(false);
                 }
                 if (isBallDeactivating && ball.activeSelf)
                 {
-                    AudioManager.instance.PlaySoundEffect(SoundName.PLAYER_FROM_BALL);
+                    AudioManager.instance.PlaySoundEffect(SoundNames.PLAYER_FROM_BALL);
                     ball.SetActive(false);
                     standing.SetActive(true);
                 }
@@ -176,13 +172,13 @@ public class PlayerController : MonoBehaviour
     {
         if(standing.activeSelf){
             Instantiate(bulletController, shotPoint.position, shotPoint.rotation).moveDirection = new Vector2(transform.localScale.x, 0);
-            standAnimator.SetTrigger(Shooting_Animation);
-            AudioManager.instance.PlaySoundEffectAdjusted(SoundName.PLAYER_SHOOT);
+            standAnimator.SetTrigger(AnimationNames.Shooting_Animation);
+            AudioManager.instance.PlaySoundEffectAdjusted(SoundNames.PLAYER_SHOOT);
         } 
         else if (ball.activeSelf && abilities.GetCanDropBomb()) 
         {
             Instantiate(bomb, bombPoint.transform.position, bombPoint.transform.rotation);
-            AudioManager.instance.PlaySoundEffectAdjusted(SoundName.PLAYER_BOMB);
+            AudioManager.instance.PlaySoundEffectAdjusted(SoundNames.PLAYER_BOMB);
         }
     }
 
@@ -203,12 +199,12 @@ public class PlayerController : MonoBehaviour
     private void SetMoveAnimation()
     {
         if(standing.activeSelf){
-            standAnimator.SetBool(Is_On_Ground_Animation, isOnGround);
-            standAnimator.SetFloat(Move_Speed_Animation, Mathf.Abs(rb.velocity.x));
+            standAnimator.SetBool(AnimationNames.Is_On_Ground_Animation, isOnGround);
+            standAnimator.SetFloat(AnimationNames.Move_Speed_Animation, Mathf.Abs(rb.velocity.x));
         } 
         else if (ball.activeSelf)
         {
-            ballAnimator.SetFloat(Move_Speed_Animation, Mathf.Abs(rb.velocity.x));
+            ballAnimator.SetFloat(AnimationNames.Move_Speed_Animation, Mathf.Abs(rb.velocity.x));
         }
     }
 
@@ -249,11 +245,11 @@ public class PlayerController : MonoBehaviour
     private bool CanDoubleJump()
     {
         if (isOnGround) {
-            AudioManager.instance.PlaySoundEffect(SoundName.PLAYER_JUMP);
+            AudioManager.instance.PlaySoundEffect(SoundNames.PLAYER_JUMP);
             return true;
         }
-        standAnimator.SetTrigger(Double_Jump_Animation);
-        AudioManager.instance.PlaySoundEffect(SoundName.PLAYER_DOUBLE_JUMP);
+        standAnimator.SetTrigger(AnimationNames.Double_Jump_Animation);
+        AudioManager.instance.PlaySoundEffect(SoundNames.PLAYER_DOUBLE_JUMP);
         return false;
     }
 }

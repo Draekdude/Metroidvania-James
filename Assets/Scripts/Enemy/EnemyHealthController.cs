@@ -15,7 +15,7 @@ public class EnemyHealthController : MonoBehaviour
         {
             if (deathEffect != null) Instantiate(deathEffect, transform.position, transform.rotation);
             Destroy(gameObject);
-            AudioManager.instance.PlaySoundEffect(SoundName.ENEMY_EXPLODE);
+            AudioManager.instance.PlaySoundEffect(SoundNames.ENEMY_EXPLODE);
         }
     }
 }

@@ -7,7 +7,6 @@ public class EnemyPatroller : MonoBehaviour
 {
     const float Min_Distance_To_Patrol_Point = 0.2f;
     const float Horizontal_Offset = 0.5f;
-    const string Move_Speed_Animation = "speed";
     [SerializeField] Transform[] patrolPoints;
     [SerializeField] float moveSpeed;
     [SerializeField] float waitAtPoint;
@@ -32,7 +31,7 @@ public class EnemyPatroller : MonoBehaviour
     void Update()
     {
         Move();
-        anim.SetFloat(Move_Speed_Animation, Mathf.Abs(rb.velocity.x));
+        anim.SetFloat(AnimationNames.Move_Speed_Animation, Mathf.Abs(rb.velocity.x));
     }
 
     private void Move()
