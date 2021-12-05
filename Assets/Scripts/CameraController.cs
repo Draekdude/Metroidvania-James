@@ -12,6 +12,7 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AudioManager.instance.PlayLevelMusic();
         player = FindObjectOfType<PlayerController>();
         SetCameraParameters();
     }

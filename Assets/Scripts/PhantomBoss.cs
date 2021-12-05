@@ -41,6 +41,8 @@ public class PhantomBoss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        AudioManager.instance.PlayBossMusic();
         cameraController = FindObjectOfType<CameraController>();
         cameraController.enabled = false;
         activeCounter = activeTime;
@@ -229,5 +231,6 @@ public class PhantomBoss : MonoBehaviour
         animator.SetTrigger(VANISH_ANIMATION);
         boss.GetComponent<Collider2D>().enabled = false;
         FindObjectsOfType<BossBullet>().ToList().ForEach(x=> Destroy(x.gameObject));
+        AudioManager.instance.PlayLevelMusic();
     }
 }

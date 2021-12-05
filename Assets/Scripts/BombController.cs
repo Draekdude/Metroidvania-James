@@ -29,6 +29,7 @@ public class BombController : MonoBehaviour
             Destroy(gameObject);
             DestroyDestructibleObjects();
             ApplyDamageToDamageableObjects();
+            AudioManager.instance.PlaySoundEffectAdjusted(SoundName.ENEMY_EXPLODE);
         }
     }
 

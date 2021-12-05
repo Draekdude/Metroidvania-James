@@ -1,3 +1,4 @@
+using System.Diagnostics.Tracing;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class EnemyHealthController : MonoBehaviour
         {
             if (deathEffect != null) Instantiate(deathEffect, transform.position, transform.rotation);
             Destroy(gameObject);
+            AudioManager.instance.PlaySoundEffect(SoundName.ENEMY_EXPLODE);
         }
     }
 }

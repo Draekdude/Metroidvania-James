@@ -8,6 +8,7 @@ public class BulletController : MonoBehaviour
 {
     const string ENEMY = "Enemy";
     const string BOSS = "Boss";
+    const string BULLET_IMPACT = "";
     [SerializeField] float bulletSpeed;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] GameObject impactEffect;
@@ -36,6 +37,7 @@ public class BulletController : MonoBehaviour
             other.GetComponent<BossHealthController>().TakeDamage(damageAmount);
         }
         if(impactEffect != null) Instantiate(impactEffect, transform.position, transform.rotation);
+        AudioManager.instance.PlaySoundEffectAdjusted(SoundName.BULLET_IMPACT);
         Destroy(gameObject);
     }
 

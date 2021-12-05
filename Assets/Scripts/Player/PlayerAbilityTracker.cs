@@ -37,7 +37,7 @@ public class PlayerAbilityTracker : MonoBehaviour
 
     public bool GetCanDoubleJump()
     {
-        return PlayerStats.canBecomeBall;
+        return PlayerStats.canDoubleJump;
     }
 
     public void SetCanDoubleJump(bool value)

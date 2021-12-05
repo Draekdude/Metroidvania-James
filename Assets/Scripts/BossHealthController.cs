@@ -5,7 +5,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
 
 public class BossHealthController : MonoBehaviour
 {
@@ -26,8 +25,10 @@ public class BossHealthController : MonoBehaviour
         if(currentHealth <= 0)
         {
             boss.EndBattle();
+            AudioManager.instance.PlaySoundEffect(SoundName.BOSS_DEATH);
             return;
         }
         bossHealthSlider.value = currentHealth;
+        AudioManager.instance.PlaySoundEffect(SoundName.BOSS_IMPACT);
     }
 }

@@ -54,17 +54,7 @@ public class AbilityUnlock : MonoBehaviour
         unlockText.text = unlockMessage;
         unlockText.gameObject.SetActive(true);
         Destroy(parent.gameObject, 3f);
+        AudioManager.instance.PlaySoundEffect(SoundName.PICKUP);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
