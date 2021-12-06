@@ -41,8 +41,10 @@
      <Compile Include="Assets/Scripts/UIController.cs" />
      <Compile Include="Assets/Scripts/CheckPoint.cs" />
      <Compile Include="Assets/Scripts/BossHealthController.cs" />
+     <Compile Include="Assets/Scripts/AudioLoader.cs" />
      <Compile Include="Assets/Scripts/AbilityUnlock.cs" />
      <Compile Include="Assets/Scripts/BossBullet.cs" />
+     <Compile Include="Assets/Scripts/ConstValues.cs" />
      <Compile Include="Assets/Scripts/Player/PlayerStats.cs" />
      <Compile Include="Assets/Scripts/HealthPickup.cs" />
      <Compile Include="Assets/Scripts/BossActivator.cs" />
@@ -60,8 +62,6 @@
      <Compile Include="Assets/Scripts/BombController.cs" />
      <Compile Include="Assets/Scripts/DoorController.cs" />
      <Compile Include="Assets/Scripts/DestroyOverTime.cs" />
-     <Compile Include="Assets/Scripts/AudioLoader.cs" />
-     <Compile Include="Assets/Scripts/ConstValues.cs" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />

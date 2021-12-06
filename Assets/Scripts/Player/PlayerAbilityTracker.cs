@@ -22,7 +22,7 @@ public class PlayerAbilityTracker : MonoBehaviour
         }
     }
 
-    private void InitializePlayerStats()
+    public void InitializePlayerStats()
     {
         PlayerStats.canDoubleJump = canDoubleJump;
         PlayerStats.canDash = canDash;

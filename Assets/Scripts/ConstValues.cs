@@ -43,5 +43,9 @@ public static class PlayerPrefNames
     public const string POSITION_X = "PositionX";
     public const string POSITION_Y = "PositionY";
     public const string POSITION_Z = "PositionZ";
+    public const string DOUBLEJUMPUNLOCKED = "DoubleJumpUnlocked";
+    public const string DASHUNLOCKED = "DashUnlocked";
+    public const string BALLUNLOCKED = "BallUnlocked";
+    public const string BOMBUNLOCKED = "BombUnlocked";
 
 }

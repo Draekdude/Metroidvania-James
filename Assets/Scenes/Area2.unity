@@ -22147,14 +22147,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8405895403364062683, guid: dca3756fe31a347cbb20be2f857d366e, type: 3}
-      propertyPath: reset
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8405895403364062683, guid: dca3756fe31a347cbb20be2f857d366e, type: 3}
-      propertyPath: spawnPoint
+    - target: {fileID: 8405895403364062680, guid: dca3756fe31a347cbb20be2f857d366e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 322613896}
+      objectReference: {fileID: 8367455535520576568}
+    - target: {fileID: 8405895403364062680, guid: dca3756fe31a347cbb20be2f857d366e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPauseUnpause
+      objectReference: {fileID: 0}
     - target: {fileID: 8405895403364062684, guid: dca3756fe31a347cbb20be2f857d366e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -22318,3 +22318,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1f508f2ba1b34b0abfe5bef06034969, type: 3}
+--- !u!114 &8367455535520576568 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5419205418683879490, guid: b1f508f2ba1b34b0abfe5bef06034969, type: 3}
+  m_PrefabInstance: {fileID: 8367455535520576567}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 551124082d65d4a29aa2ca0d17ebe23f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

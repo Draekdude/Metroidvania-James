@@ -6,6 +6,7 @@ using UnityEngine;
 public class BossActivator : MonoBehaviour
 {
     [SerializeField] GameObject bossToActivate;
+    [SerializeField] string bossRef;
 
     void Start()
     {
@@ -16,6 +17,7 @@ public class BossActivator : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            if(PlayerPrefs.HasKey(bossRef) && PlayerPrefs.GetInt(bossRef) == 1) return;
             bossToActivate.SetActive(true);
             gameObject.SetActive(false); 
         }

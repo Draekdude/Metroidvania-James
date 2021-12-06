@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static AnimationNames;
 
 public class PhantomBoss : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class PhantomBoss : MonoBehaviour
     [SerializeField] Transform shotPoint;
     [SerializeField] GameObject winObjects;
     [SerializeField] GameObject hiddenCave;
+    [SerializeField] string bossRef;
     bool battleEnded;
     float shotCounter;
     Transform targetPoint;
@@ -76,7 +78,7 @@ public class PhantomBoss : MonoBehaviour
             {
                 targetPoint = boss;
                 fadeCounter = fadeOutTime;
-                animator.SetTrigger(AnimationNames.VANISH_ANIMATION);
+                animator.SetTrigger(VANISH_ANIMATION);
             } 
             else 
             {
@@ -219,7 +221,7 @@ public class PhantomBoss : MonoBehaviour
     private void BossVanishBegin()
     {
         fadeCounter = fadeOutTime;
-        animator.SetTrigger(AnimationNames.VANISH_ANIMATION);
+        animator.SetTrigger(VANISH_ANIMATION);
     }
 
     public void EndBattle()
@@ -227,9 +229,10 @@ public class PhantomBoss : MonoBehaviour
         battleEnded = true;
         hiddenCave.SetActive(false);
         winObjects.SetActive(true);
-        animator.SetTrigger(AnimationNames.VANISH_ANIMATION);
+        animator.SetTrigger(VANISH_ANIMATION);
         boss.GetComponent<Collider2D>().enabled = false;
         FindObjectsOfType<BossBullet>().ToList().ForEach(x=> Destroy(x.gameObject));
         AudioManager.instance.PlayLevelMusic();
+        PlayerPrefs.SetInt(bossRef, 1);
     }
 }
